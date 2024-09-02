@@ -15,7 +15,6 @@ export const TableHeader = forwardRef<
 >(({ className, ...props }, ref) => (
   <thead ref={ref} className={clsx(s.tHeader, className)} {...props} />
 ))
-TableHeader.displayName = 'TableHeader'
 
 export const TableBody = forwardRef<
   HTMLTableSectionElement,
