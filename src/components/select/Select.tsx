@@ -34,6 +34,7 @@ export const Selector = forwardRef<ElementRef<typeof Select.Root>, Props>(
     )
   }
 )
+Selector.displayName = 'Selector'
 
 export const SelectItem = forwardRef<ElementRef<typeof Select.Item>, SelectItemProps>(
   (props: SelectItemProps, forwardedRef) => {
@@ -49,3 +50,4 @@ export const SelectItem = forwardRef<ElementRef<typeof Select.Item>, SelectItemP
     )
   }
 )
+SelectItem.displayName = 'SelectItem'
