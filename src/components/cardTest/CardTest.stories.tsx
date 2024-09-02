@@ -5,7 +5,7 @@ import { CardTest } from './CardTest' // More on how to set up stories at:
 const meta = {
   component: CardTest,
   tags: ['autodocs'],
-  title: 'libITL/CardTest',
+  title: 'lib-insta-leaders/CardTest',
 } satisfies Meta<typeof CardTest>
 
 export default meta
