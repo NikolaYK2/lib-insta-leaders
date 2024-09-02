@@ -4,7 +4,7 @@ import {TypographyVariant} from "./typography.enum";
 
 const meta = {
     component: Typography,
-    title: "lib-insta-leaders/Typography",
+    title: "Components/Typography",
     tags: ['autodocs'],
 } satisfies Meta<typeof Typography>;
 
