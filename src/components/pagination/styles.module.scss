@@ -1,0 +1,85 @@
+.pagination {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--color-light-100);
+
+  .blockSelector {
+    margin-left: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .selector {
+      position: relative;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+
+      box-sizing: border-box;
+      min-width: 50px;
+      max-width: 50px;
+      height: 24px;
+      padding: 0 6px;
+
+      color: var(--color-light-100);
+
+      background: var(--color-dark-700);
+      border: 1px solid var(--color-dark-500);
+      border-radius: 1px;
+    }
+  }
+}
+
+.button {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+
+  background-color: transparent;
+  color: var(--color-light-100);
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+
+  &:hover {
+    background-color: #333;
+    color: var(--color-light-100);
+  }
+}
+
+.active {
+  background-color: var(--color-light-100);
+  color: #000;
+}
+
+.buttonArrow {
+  cursor: pointer;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+
+  svg {
+    color: var(--color-light-100);
+
+    &:hover {
+      color: #808080;
+    }
+  }
+}
+
+.button, .buttonArrow svg {
+  transition: ease-in-out .2s;
+
+  &:focus {
+    outline: 2px solid var(--color-info-900);
+    border-radius: 2px;
+  }
+}
+
+
+.dots {
+  cursor: default;
+}
+
