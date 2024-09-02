@@ -3,7 +3,7 @@ import {Meta, StoryObj} from "@storybook/react";
 
 const meta = {
     component: Button,
-    title: "lib-insta-leaders/Button",
+    title: "Components/Button",
     tags: ['autodocs'],
     argTypes: {
         disabled: {
