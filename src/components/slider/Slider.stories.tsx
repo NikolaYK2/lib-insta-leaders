@@ -21,6 +21,7 @@ export const Primary: Story = {
 export const Double: Story = {
   args: { ...Primary.args },
   render: args => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [value, setValue] = useState([55, 75])
     return <Slider {...args} value={value} onValueChange={setValue} />
   },
