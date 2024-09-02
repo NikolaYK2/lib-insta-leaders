@@ -3,6 +3,7 @@ import { ComponentPropsWithoutRef, forwardRef } from 'react'
 import * as RadioGroup from '@radix-ui/react-radio-group'
 import { RadioGroupProps } from '@radix-ui/react-radio-group'
 import s from './Radio.module.scss'
+import clsx from 'clsx'
 
 export type RadioGroupPropsType = RadioGroupProps & {
   name: string
@@ -24,23 +25,30 @@ export const RadioGroupComponent = forwardRef<HTMLDivElement, RadioGroupPropsTyp
 )
 
 export type RadioProps = {
-  disabled?: boolean
   id: string
   label?: string
   value: string
+  disabled?: boolean
 }
 
 export const Radio = forwardRef<HTMLButtonElement, RadioProps>((props, ref) => {
-  const { disabled, id, label, value, ...rest } = props
+  const { disabled = false, id, label, value, ...rest } = props
 
   return (
-    <div className={`${s.blockRadio}`}>
-      <label className={`${s.blockItem} ${disabled ? s.disabledLabel : ''}`}>
-        <RadioGroup.Item className={s.item} id={value} ref={ref} value={value} {...rest}>
+    <div className={clsx(s.blockRadio, disabled && s.blockDisabled)}>
+      <label className={s.blockItem}>
+        <RadioGroup.Item
+          className={s.item}
+          id={value}
+          ref={ref}
+          value={value}
+          disabled={disabled}
+          {...rest}
+        >
           <RadioGroup.Indicator className={s.indicator} />
         </RadioGroup.Item>
       </label>
-      <label className={`${s.label} ${disabled ? s.disabledLabel : ''}`} htmlFor={id}>
+      <label className={clsx(s.label, disabled && s.labelDisabled)} htmlFor={id}>
         {label}
       </label>
     </div>

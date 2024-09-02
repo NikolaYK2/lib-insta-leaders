@@ -5,6 +5,13 @@ button {
 .root {
   display: flex;
   flex-direction: column;
+
+  &[data-disabled],
+  &[data-disabled] .label,
+  &[data-disabled] .blockRadio:hover .blockItem {
+    color: var(--color-dark-100);
+    background: transparent;
+  }
 }
 
 .blockRadio {
@@ -13,6 +20,8 @@ button {
   margin: 5px 0;
 
   .blockItem {
+    cursor: pointer;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -24,12 +33,8 @@ button {
 
     border-radius: 50%;
 
-    &:active {
-      background: var(--color-primary-900);
-    }
-
-    &:focus-visible {
-      background: var(--color-dark-700);
+    &:focus-within {
+      background: var(--color-dark-500);
     }
 
     .item {
@@ -37,12 +42,8 @@ button {
       height: 16px;
 
       background: transparent;
-      border: 2px solid var(--color-primary-500);
+      border: 2px solid var(--color-light-100);
       border-radius: 100%;
-
-      &:disabled {
-        border: 2px solid var(--color-primary-900);
-      }
 
       .indicator {
         position: relative;
@@ -62,33 +63,40 @@ button {
           width: 10px;
           height: 10px;
 
-          background-color: var(--color-primary-500);
+          background-color: var(--color-light-100);
           border-radius: 50%;
         }
       }
 
-      .indicator[data-disabled]::after {
-        background: var(--color-primary-900);
+      &[data-disabled] {
+        border: 2px solid var(--color-dark-100);
+      }
+
+      &[data-disabled] .indicator::after {
+        background-color: var(--color-dark-100);
       }
     }
   }
 
   &:hover .blockItem {
-    background: var(--color-dark-500);
+    background: var(--color-dark-300);
   }
 
   .label {
+    cursor: pointer;
+
     padding: 0 0 0 2px;
+
     font-size: clamp(var(--font-size-12), 5vw, var(--font-size-14));
     line-height: var(--line-height-24);
     color: var(--color-light-100);
   }
 
-  .disabledLabel {
-    color: var(--color-light-900);
-
-    &:hover {
-      background: none;
-    }
+  .labelDisabled {
+    color: var(--color-dark-100);
   }
+}
+
+.blockDisabled:hover .blockItem {
+  background: transparent;
 }
