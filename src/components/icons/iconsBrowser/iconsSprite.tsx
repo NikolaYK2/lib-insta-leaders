@@ -143,7 +143,7 @@ export const iconsSprite =
                 fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
         </g>
         <g id="yandex">
-            <g clipPath="url(#clip0_26444_7704)">
+            <g id="yandex" clipPath="url(#clip0_26444_7704)" fill={"none"}>
                 <path
                     d="M18 35C27.3888 35 35 27.3888 35 18C35 8.61116 27.3888 1 18 1C8.61116 1 1 8.61116 1 18C1 27.3888 8.61116 35 18 35Z"
                     stroke="currentColor" strokeWidth="2"/>
@@ -153,7 +153,7 @@ export const iconsSprite =
             </g>
             <defs>
                 <clipPath id="clip0_26444_7704">
-                    <rect width="36" height="36" fill="yellow"/>
+                    <rect width="36" height="36" fill="black"/>
                 </clipPath>
             </defs>
         </g>
