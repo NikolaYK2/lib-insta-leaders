@@ -5,8 +5,9 @@ import {TypographyVariant} from "./src/components/typography/typography.enum";
 createRoot(document.getElementById("root")!).render(
     <div>
         <b>This is Library of It-Leaders (Temporary)</b>
-        <Card>hello</Card>
-        <IconBrowser iconId={"microsoft-edge"}/>
+        <div>
+            <IconBrowser iconId={"microsoft-edge"}/>
+        </div>
         <Card>hello</Card>
 
     </div>
