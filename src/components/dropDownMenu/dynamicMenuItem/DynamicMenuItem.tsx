@@ -1,4 +1,4 @@
-import {Icon} from "../../icon/icon.tsx";
+// import {Icon} from "../../icon/icon.tsx";
 import s from "./styles.module.scss";
 import {forwardRef} from "react";
 
@@ -28,14 +28,16 @@ export const DynamicMenuItem = forwardRef<HTMLAnchorElement | HTMLButtonElement,
     if (type === 'a') {
         return (
             <a href={props.route} className={s.link} ref={ref as React.Ref<HTMLAnchorElement>}>
-                <Icon iconId={icon}/>
+                {/*<Icon iconId={icon}/>*/}
+                x
                 <span>{title}</span>
             </a>
         );
     } else {
         return (
             <button onClick={() => props.callback()} className={s.button} ref={ref as React.Ref<HTMLButtonElement>}>
-                <Icon iconId={icon}/>
+                {/*<Icon iconId={icon}/>*/}
+                x
                 <span>{title}</span>
             </button>
         );
