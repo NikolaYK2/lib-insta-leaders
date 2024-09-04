@@ -1,35 +1,33 @@
-import {Meta, StoryObj} from "@storybook/react";
-import {DynamicMenuItem} from "./DynamicMenuItem.tsx";
+import { Meta, StoryObj } from '@storybook/react'
+import { DynamicMenuItem } from './DynamicMenuItem.tsx'
 
 const meta = {
-    title: 'Components/DropDownMenu',
-    component: DynamicMenuItem,
-    parameters: {
-        layout: "centered"
-    },
-    tags: ['autodocs'],
+  title: 'Components/DropDownMenu',
+  component: DynamicMenuItem,
+  parameters: {
+    layout: 'centered',
+  },
+  tags: ['autodocs'],
 } satisfies Meta<typeof DynamicMenuItem>
 
-export default meta;
+export default meta
 
 type Story = StoryObj<typeof meta>
 
 export const LinkItem: Story = {
-    args: {
-        title: 'My Profile',
-        type: 'a',
-        icon: 'profile',
-        route: '/profile',
-    },
-};
+  args: {
+    title: 'My Profile',
+    type: 'a',
+    icon: 'profile',
+    href: '/profile',
+  },
+}
 
 export const ButtonItem: Story = {
-    args: {
-        title: 'Log Out',
-        type: 'button',
-        icon: 'logOut',
-        callback: () => alert('Logging out...'),
-    },
-};
-
-
+  args: {
+    title: 'Log Out',
+    type: 'button',
+    icon: 'logOut',
+    onClick: () => alert('Logging out...'),
+  },
+}

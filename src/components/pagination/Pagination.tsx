@@ -4,12 +4,12 @@ import { SelectItem, Selector } from '../select/Select.tsx'
 import { DOTS, usePagination } from '../../hooks/usePagination.ts'
 
 export interface PaginationProps {
-  onPageChange: (page: number) => void
-  setPageSize: (pageSize: string) => void
-  totalCount: number
-  siblingCount: number
-  currentPage: number
-  pageSize: string
+  onPageChange: (page: number) => void // Функция, вызываемая при изменении страницы.
+  setPageSize: (pageSize: string) => void // Функция для изменения количества страниц на странице.
+  totalCount: number //  Общее количество страниц.
+  siblingCount: number // Количество соседних страниц, отображаемых рядом с текущей.
+  currentPage: number // Текущий номер страницы.
+  pageSize: string // Количество элементов на одной странице.
 }
 
 const Pagination = (props: PaginationProps) => {

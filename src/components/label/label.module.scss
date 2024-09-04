@@ -1,0 +1,19 @@
+.label {
+  display: inline-block;
+  margin-bottom: 1px;
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-m);
+}
+
+.primary {
+  color: var(--color-light-900);
+}
+
+.disabled {
+  color: var(--color-dark-100);
+}
+
+.required {
+  margin-left: 2px;
+  color: var(--color-danger-500);
+}
