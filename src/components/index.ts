@@ -1,4 +1,7 @@
 export * from './cardTest'
+export * from './input'
+export * from './label'
+export * from './tabs'
 export * from './card'
 export * from './dropDownMenu'
 export * from './pagination'
