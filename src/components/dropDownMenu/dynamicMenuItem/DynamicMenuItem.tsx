@@ -1,6 +1,8 @@
 // import {Icon} from "../../icon/icon.tsx";
+
 import s from './styles.module.scss'
 import { forwardRef } from 'react'
+
 
 export type IconProps = 'logOut' | 'profile' | 'play' | 'trash' | 'edit'
 
@@ -23,6 +25,7 @@ export const DynamicMenuItem = forwardRef<HTMLAnchorElement | HTMLButtonElement,
   (props, ref) => {
     const { type, icon, title } = props
     if (type === 'a') {
+
       return (
         <a href={props.href} className={s.link} ref={ref as React.Ref<HTMLAnchorElement>}>
           {/*<Icon iconId={icon}/>*/}
@@ -40,6 +43,7 @@ export const DynamicMenuItem = forwardRef<HTMLAnchorElement | HTMLButtonElement,
           <span>{title}</span>
         </button>
       )
+
     }
   }
 )
