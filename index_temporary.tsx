@@ -1,14 +1,15 @@
-import {createRoot} from "react-dom/client";
-import {Card, IconBrowser} from "./src";
-import {TypographyVariant} from "./src/components/typography/typography.enum";
+import { createRoot } from 'react-dom/client'
+import { Checkbox } from './src'
 
-createRoot(document.getElementById("root")!).render(
+createRoot(document.getElementById('root')!).render(
+  <div>
+    <b>This is Library of It-Leaders (Temporary)</b>
     <div>
-        <b>This is Library of It-Leaders (Temporary)</b>
-        <div>
-            <IconBrowser iconId={"microsoft-edge"}/>
-        </div>
-        <Card>hello</Card>
-
+      <Checkbox
+        label={'gago'}
+        // checked={true}
+        // disabled
+      />
     </div>
-);
+  </div>
+)
