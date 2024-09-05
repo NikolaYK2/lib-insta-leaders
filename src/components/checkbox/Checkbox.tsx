@@ -12,19 +12,20 @@ export type CheckboxProps = {
   disabled?: boolean
   id?: string
   label?: ReactNode
+  onValueChange?: (checked: boolean) => void
 } & ComponentPropsWithoutRef<typeof CheckboxRadix.Root>
 
 export const Checkbox = forwardRef<ElementRef<typeof CheckboxRadix.Root>, CheckboxProps>(
-  ({ checked, className, disabled = false, id, label, ...restProps }, ref) => {
+  ({ checked, className, disabled = false, id, label, onValueChange, ...restProps }, ref) => {
     const finalId = useFinalId(id)
     return (
       <div style={{ display: 'flex', alignItems: 'center' }}>
         <CheckboxRadix.Root
           checked={checked}
           className={clsx(className, s.CheckboxRoot)}
-          defaultChecked
           id={finalId}
           disabled={disabled}
+          onCheckedChange={onValueChange}
           {...restProps}
           ref={ref}
         >
