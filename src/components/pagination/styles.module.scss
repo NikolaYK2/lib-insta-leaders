@@ -47,6 +47,10 @@
     background-color: #333;
     color: var(--color-light-100);
   }
+  &:focus {
+    outline: 2px solid var(--color-primary-900);
+    border-radius: 2px;
+  }
 }
 
 .active {
@@ -55,6 +59,9 @@
 }
 
 .buttonArrow {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
   cursor: pointer;
   padding: 0;
   border: none;
@@ -69,17 +76,11 @@
   }
 }
 
-.button, .buttonArrow svg {
-  transition: ease-in-out .2s;
-
-  &:focus {
-    outline: 2px solid var(--color-info-900);
-    border-radius: 2px;
-  }
+.button,
+.buttonArrow svg {
+  transition: ease-in-out 0.2s;
 }
-
 
 .dots {
   cursor: default;
 }
-
