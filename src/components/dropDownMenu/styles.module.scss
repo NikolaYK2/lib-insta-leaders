@@ -6,6 +6,7 @@
   border-radius: 6px;
   border: 1px solid var(--color-dark-500);
   padding: 12px;
+
   button {
     background-color: transparent;
   }
@@ -15,6 +16,7 @@
   cursor: pointer;
   color: var(--color-light-100);
   background-color: transparent;
+
   img {
     width: 36px;
     height: 36px;
@@ -23,48 +25,38 @@
   }
 }
 
-.Item {
+.profile {
   position: relative;
-  line-height: 1;
-  user-select: none;
-  outline: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 28px 0 0;
+
   &[data-disabled] {
     color: var(--color-dark-300);
     pointer-events: none;
   }
 
-  // Item  hover
-  //  &[data-highlighted] {
-  //    color: var(--color-light-opacity);
-  //  }
+  img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
 
-  .profile {
-    cursor: pointer;
+  div {
     display: flex;
-    align-items: center;
-    gap: 8px;
-    margin: 4px 28px 0 0;
+    flex-direction: column;
+    gap: 5px;
 
-    img {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      object-fit: cover;
+    span:nth-of-type(1) {
+      font-size: 16px;
     }
 
-    div {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-
-      span:nth-of-type(1) {
-        font-size: 16px;
-      }
-
-      span:nth-of-type(2) {
-        font-size: 16px;
-        color: var(--color-dark-100);
-      }
+    span:nth-of-type(2) {
+      font-size: 16px;
+      color: var(--color-dark-100);
     }
   }
 }
