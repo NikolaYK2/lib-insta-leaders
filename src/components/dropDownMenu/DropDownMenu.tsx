@@ -15,13 +15,13 @@ interface BaseItemSetting {
 }
 
 interface LinkItemSetting extends BaseItemSetting {
-  route: string
-  callback?: never
+  href: string
+  onClick?: never
 }
 
 interface ButtonItemSetting extends BaseItemSetting {
-  callback: () => void
-  route?: never
+  onClick: () => void
+  href?: never
 }
 
 export type ItemSetting = LinkItemSetting | ButtonItemSetting
@@ -30,7 +30,7 @@ export type Profile = {
   userName: string
   email?: string
   img?: string
-  callback?: () => void
+  href?: string
 }
 
 export type DropDownMenuProps = {
@@ -49,9 +49,9 @@ export const DropDownMenu = (props: DropDownMenuProps) => {
           <DynamicMenuItem
             title={el.title}
             icon={el.icon}
-            type={el.route ? 'a' : 'button'}
-            callback={el.callback || (() => {})}
-            route={el.route || ''}
+            type={el.href ? 'a' : 'button'}
+            onClick={el.onClick || (() => {})}
+            href={el.href || ''}
           />
         </DropdownMenu.Item>
         {i < items.length - 1 && <DropdownMenu.Separator className={s.Separator} />}
@@ -79,14 +79,14 @@ export const DropDownMenu = (props: DropDownMenuProps) => {
           {isArrow && <DropdownMenu.Arrow className={s.Arrow} />}
           {profile && (
             <>
-              <DropdownMenu.Item className={s.Item}>
-                <div className={s.profile} onClick={profile.callback}>
+              <DropdownMenu.Item asChild>
+                <a className={s.profile} href={profile.href}>
                   <img src={profile.img} alt={profile.img} />
                   <div>
                     <span className={s.userName}>{profile.userName}</span>
                     <span className={s.userEmail}>{profile.email}</span>
                   </div>
-                </div>
+                </a>
               </DropdownMenu.Item>
               <DropdownMenu.Separator className={s.Separator} />
               {itemList}
