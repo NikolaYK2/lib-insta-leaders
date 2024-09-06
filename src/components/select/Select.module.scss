@@ -25,7 +25,7 @@ button {
 
   transition: color 0.2s ease;
 
-  .value {
+  .valueBlock {
     display: flex;
     align-items: center;
   }
@@ -37,6 +37,7 @@ button {
 
     width: 20px;
     height: 20px;
+    margin: 0 12px 0 0;
   }
 }
 
@@ -65,10 +66,16 @@ button {
   align-items: center;
   justify-content: end;
 
-  width: 16px;
-  height: 16px;
+  width: 24px;
+  height: 24px;
 
   color: var(--violet-11);
+
+  .icon {
+    transform-origin: center;
+    transform: rotate(90deg) rotateY(-0deg);
+    transition: transform 0.4s ease;
+  }
 }
 
 .selectIcon > svg {
@@ -92,6 +99,11 @@ button {
   border-color: var(--color-light-100);
 }
 
+.trigger[data-state='open'] .icon {
+  transform: rotate(90deg) rotateY(180deg);
+  transition: transform 0.4s ease;
+}
+
 .viewport {
   //overflow-y: auto; /* Добавьте вертикальную прокрутку */
   max-height: 150px; /* Установите максимальную высоту для прокрутки */
@@ -105,7 +117,6 @@ button {
   display: flex;
   align-items: center;
 
-  height: 25px;
   padding: 6px 12px;
 
   border-radius: 3px;
