@@ -31,6 +31,19 @@ export const Title: Story = {
     </Modal>
   ),
 }
+export const CLose: Story = {
+  name: 'Modal close',
+  render: () => (
+    <Modal>
+      <ModalClose style={{ left: 0 }}>
+        <Button>
+          <DynamicIcon iconId={'ArrowIosBack'} />
+        </Button>
+      </ModalClose>
+    </Modal>
+  ),
+}
+
 export const Description: Story = {
   name: 'Modal description',
   render: () => (
