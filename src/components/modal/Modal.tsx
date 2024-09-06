@@ -2,6 +2,7 @@ import React, { ComponentPropsWithoutRef, CSSProperties, ElementRef, forwardRef 
 import * as DialogPrimitive from '@radix-ui/react-dialog'
 import s from './Modal.module.scss'
 import clsx from 'clsx'
+import DynamicIcon from '../icons/DynamicIcon.tsx'
 
 type ModalContentProps = {
   info?: boolean
@@ -21,7 +22,9 @@ export const ModalContent = React.forwardRef<
       {children}
       {btnClose && (
         <DialogPrimitive.Close>
-          <button className={clsx(s.btn, info && s.btnInfo)}>X</button>
+          <button className={clsx(s.btn, info && s.btnInfo)}>
+            <DynamicIcon iconId={'CloseOutline'} />
+          </button>
         </DialogPrimitive.Close>
       )}
     </DialogPrimitive.Content>
@@ -51,7 +54,9 @@ export const ModalClose = forwardRef<
 >(({ ...props }, forwardRef) => {
   return (
     <DialogPrimitive.Close ref={forwardRef} {...props} asChild>
-      <button className={s.btn}>X</button>
+      <button className={s.btn}>
+        <DynamicIcon iconId={'CloseOutline'} />
+      </button>
     </DialogPrimitive.Close>
   )
 })

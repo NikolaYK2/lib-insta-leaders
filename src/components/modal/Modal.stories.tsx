@@ -9,6 +9,7 @@ import {
 import { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
 import { Button } from '../button'
+import DynamicIcon from '../icons/DynamicIcon'
 
 const meta: Meta<typeof Modal> = {
   title: 'Components/Modal',
@@ -187,17 +188,19 @@ export const ModalImage: Story = {
     <Modal>
       <ModalTrigger>
         <Button>Cropping</Button>
-        <ModalContent style={{ maxWidth: '492px', width: '100%' }} btnClose={false}>
-          <ModalTitle asChild>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <Button>back</Button>
-              <p>Cropping</p>
-              <Button>next</Button>
-            </div>
-          </ModalTitle>
-          <div style={{ background: 'darkgrey', width: '100%', height: '504px' }} />
-        </ModalContent>
       </ModalTrigger>
+      <ModalContent style={{ maxWidth: '492px', width: '100%' }} btnClose={false}>
+        <ModalTitle asChild>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <Button variant={'text'} style={{ padding: 0 }}>
+              <DynamicIcon iconId={'ArrowIosBack'} color={'white'} />
+            </Button>
+            <p>Cropping</p>
+            <Button>next</Button>
+          </div>
+        </ModalTitle>
+        <div style={{ background: 'darkgrey', width: '100%', height: '204px' }} />
+      </ModalContent>
     </Modal>
   ),
 }
