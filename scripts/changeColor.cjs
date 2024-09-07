@@ -2,9 +2,9 @@ const fs = require('fs');
 const fsp = fs.promises
 const join = require('path').join;
 
-const dirWithIconsComps = 'src/components/icons/iconsBrowser'
+const dirWithIconsComps = 'src/components/icons/iconComponents'
 
-async function renameIcons() {
+async function changeColor() {
 
     const files = await fsp.readdir(dirWithIconsComps)
 
@@ -23,6 +23,6 @@ async function renameIcons() {
 
 }
 
-void renameIcons()
+void changeColor()
 
 // for running the script: node scripts/changeColor.cjs
