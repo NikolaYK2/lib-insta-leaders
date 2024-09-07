@@ -1,5 +1,5 @@
 import { forwardRef, memo, Ref, SVGProps } from 'react'
-import * as icons from './iconsOrdinary'
+import * as icons from './iconComponents'
 
 interface DynamicIconProps extends SVGProps<SVGSVGElement> {
   iconId: keyof typeof icons
