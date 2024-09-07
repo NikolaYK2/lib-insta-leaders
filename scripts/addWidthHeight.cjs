@@ -16,6 +16,7 @@ async function addWidthHeight() {
 
         const newFileContent = fileContent
             .replaceAll(`viewBox="0 0 24 24"`, `width={24} height={24} viewBox="0 0 24 24"`)
+            .replaceAll(`viewBox="0 0 24 16"`, `width={24} height={16} viewBox="0 0 24 16"`)
             .replaceAll(`viewBox="0 0 36 36"`, `width={36} height={36} viewBox="0 0 36 36"`)
             // .replaceAll(`width={24}`, ``)
             // .replaceAll(`width={36}`, ``)
