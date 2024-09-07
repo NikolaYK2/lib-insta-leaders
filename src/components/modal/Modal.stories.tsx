@@ -7,7 +7,7 @@ import {
   ModalTrigger,
 } from './Modal'
 import { Meta, StoryObj } from '@storybook/react'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { Button } from '../button'
 import DynamicIcon from '../icons/DynamicIcon'
 
@@ -37,7 +37,7 @@ export const CLose: Story = {
     <Modal>
       <ModalClose style={{ left: 0 }}>
         <Button>
-          <DynamicIcon iconId={'ArrowIosBack'} />
+          <DynamicIcon iconId={'CloseOutline'} width={24} />
         </Button>
       </ModalClose>
     </Modal>
@@ -206,7 +206,7 @@ export const ModalImage: Story = {
         <ModalTitle asChild>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <Button variant={'text'} style={{ padding: 0 }}>
-              <DynamicIcon iconId={'ArrowIosBack'} color={'white'} />
+              <DynamicIcon iconId={'ArrowBackOutline'} width={24} color={'white'} />
             </Button>
             <p>Cropping</p>
             <Button>next</Button>

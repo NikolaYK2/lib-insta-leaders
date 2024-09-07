@@ -2,7 +2,8 @@ import { Meta, StoryObj } from '@storybook/react'
 import { SelectItem, Selector } from './Select'
 import DynamicIcon from '../icons/DynamicIcon'
 import { useState } from 'react'
-import { Typography } from '../typography'
+import { Typography, TypographyVariant } from '../typography'
+import * as icons from '../icons/iconComponents'
 
 const meta: Meta<typeof Selector> = {
   component: Selector,
@@ -60,20 +61,20 @@ const selectIcon = { width: '163px' }
 export const SelectIcon: Story = {
   render: () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [state, setState] = useState('RussianFlag')
+    const [state, setState] = useState<keyof typeof icons>('FlagRussia')
 
     return (
       <Selector
         defaultValue={state}
         style={selectIcon}
-        triggerIcon={<DynamicIcon iconId={state} />}
-        onValueChange={value => setState(value)}
+        triggerIcon={<DynamicIcon iconId={state} width={24} />}
+        onValueChange={value => setState(value as keyof typeof icons)}
       >
-        <SelectItem style={{ width: '161px' }} value={'RussianFlag'}>
-          <Typography variant={'regular_text_16'}>Russian</Typography>
+        <SelectItem style={{ width: '161px' }} value={'FlagRussia'}>
+          <Typography variant={TypographyVariant.regular_text_16}>Russian</Typography>
         </SelectItem>
-        <SelectItem value={'EnglishFlag'}>
-          <Typography variant={'regular_text_16'}>English</Typography>
+        <SelectItem value={'FlagUnitedKingdom'}>
+          <Typography variant={TypographyVariant.regular_text_16}>English</Typography>
         </SelectItem>
       </Selector>
     )

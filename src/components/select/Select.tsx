@@ -24,7 +24,7 @@ export const Selector = forwardRef<ElementRef<typeof Select.Root>, Props>(
             <Select.Value />
           </div>
           <Select.Icon className={s.selectIcon}>
-            <DynamicIcon iconId={'ArrowIosBack'} className={s.icon} />
+            <DynamicIcon iconId={'ArrowIosDownOutline'} className={s.icon} />
           </Select.Icon>
         </Select.Trigger>
 

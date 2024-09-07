@@ -23,7 +23,7 @@ export const ModalContent = React.forwardRef<
       {btnClose && (
         <DialogPrimitive.Close>
           <button className={clsx(s.btn, info && s.btnInfo)}>
-            <DynamicIcon iconId={'CloseOutline'} />
+            <DynamicIcon iconId={'CloseOutline'} width={24} />
           </button>
         </DialogPrimitive.Close>
       )}
@@ -55,7 +55,7 @@ export const ModalClose = forwardRef<
   return (
     <DialogPrimitive.Close ref={forwardRef} {...props} asChild>
       <button className={s.btn}>
-        <DynamicIcon iconId={'CloseOutline'} />
+        <DynamicIcon iconId={'CloseOutline'} width={24} />
       </button>
     </DialogPrimitive.Close>
   )
