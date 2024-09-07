@@ -206,7 +206,7 @@ export const ModalImage: Story = {
         <ModalTitle asChild>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <Button variant={'text'} style={{ padding: 0 }}>
-              <DynamicIcon iconId={'ArrowBackOutline'} width={24} color={'white'} />
+              <DynamicIcon iconId={'ArrowIosBack'} width={24} color={'white'} />
             </Button>
             <p>Cropping</p>
             <Button>next</Button>
