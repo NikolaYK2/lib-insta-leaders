@@ -1,7 +1,7 @@
 import React, { ComponentPropsWithoutRef, ElementRef, forwardRef, ReactNode } from 'react'
 import * as CheckboxRadix from '@radix-ui/react-checkbox'
 import s from './checkbox.module.scss'
-import { CheckmarkOutline } from '../icons'
+import { CheckmarkOutline, DynamicIcon } from '../icons'
 import { Typography, TypographyVariant } from '../typography'
 import clsx from 'clsx'
 import { useFinalId } from '../../hooks/useFinalId.ts'
@@ -30,7 +30,7 @@ export const Checkbox = forwardRef<ElementRef<typeof CheckboxRadix.Root>, Checkb
           ref={ref}
         >
           <CheckboxRadix.Indicator className={s.CheckboxIndicator}>
-            <CheckmarkOutline />
+            <DynamicIcon iconId={'CheckmarkOutline'} width={18} />
           </CheckboxRadix.Indicator>
         </CheckboxRadix.Root>
         <Typography asChild={true} variant={TypographyVariant.regular_text_14}>
