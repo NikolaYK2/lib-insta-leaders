@@ -4,6 +4,7 @@ import * as Select from '@radix-ui/react-select'
 import { SelectItemProps, SelectProps } from '@radix-ui/react-select'
 
 import s from './Select.module.scss'
+import DynamicIcon from '../icons/DynamicIcon.tsx'
 
 type Props = SelectProps & {
   children: ReactNode
@@ -18,11 +19,13 @@ export const Selector = forwardRef<ElementRef<typeof Select.Root>, Props>(
     return (
       <Select.Root defaultValue={defaultValue} {...props}>
         <Select.Trigger className={`${s.trigger} ${className}`} ref={ref} style={style}>
-          <div className={s.value}>
-            {triggerIcon && <Select.Icon className={s.triggerIcon}>x</Select.Icon>}
+          <div className={s.valueBlock}>
+            {triggerIcon && <Select.Icon className={s.triggerIcon}>{triggerIcon}</Select.Icon>}
             <Select.Value />
           </div>
-          <Select.Icon className={s.selectIcon}>x</Select.Icon>
+          <Select.Icon className={s.selectIcon}>
+            <DynamicIcon iconId={'ArrowIosDownOutline'} className={s.icon} />
+          </Select.Icon>
         </Select.Trigger>
 
         <Select.Portal>
@@ -42,10 +45,7 @@ export const SelectItem = forwardRef<ElementRef<typeof Select.Item>, SelectItemP
 
     return (
       <Select.Item className={`${s.item} ${className}`} {...rest} ref={forwardedRef}>
-        <Select.ItemText>
-          {/*<TextFormat variant={'body2'}>{children}</TextFormat>{' '}*/}
-          {children}
-        </Select.ItemText>
+        <Select.ItemText>{children}</Select.ItemText>
       </Select.Item>
     )
   }
