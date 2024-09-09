@@ -8,10 +8,6 @@ export interface CardProps {
 }
 
 export const Card = (props: CardProps) => {
-  const { children, height = '550px', maxWidth = '420px' } = props
-  return (
-    <div className={`${s.card}`} style={{ maxWidth, height }}>
-      {children}
-    </div>
-  )
+  const { children } = props
+  return <div className={`${s.card} ${props.className}`}>{children}</div>
 }

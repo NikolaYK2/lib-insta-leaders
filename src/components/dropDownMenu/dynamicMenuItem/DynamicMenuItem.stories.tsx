@@ -18,7 +18,7 @@ export const LinkItem: Story = {
   args: {
     title: 'My Profile',
     type: 'a',
-    icon: 'profile',
+    icon: 'Person',
     href: '/profile',
   },
 }
@@ -27,7 +27,7 @@ export const ButtonItem: Story = {
   args: {
     title: 'Log Out',
     type: 'button',
-    icon: 'logOut',
+    icon: 'LogOut',
     onClick: () => alert('Logging out...'),
   },
 }

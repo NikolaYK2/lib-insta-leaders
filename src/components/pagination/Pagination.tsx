@@ -2,6 +2,8 @@ import s from './styles.module.scss'
 import { KeyboardEventHandler } from 'react'
 import { SelectItem, Selector } from '../select/Select.tsx'
 import { DOTS, usePagination } from '../../hooks/usePagination.ts'
+import { Typography, TypographyVariant } from '../typography'
+import { ArrowIosBack, ArrowIosForward } from '../icons'
 
 export interface PaginationProps {
   onPageChange: (page: number) => void // Функция, вызываемая при изменении страницы.
@@ -57,7 +59,7 @@ const Pagination = (props: PaginationProps) => {
         onKeyDown={handleKeyDownPrevious}
         disabled={currentPage === 1}
       >
-        {/*<Icon iconId={'arrow-pagination-left'} />*/}
+        <ArrowIosBack width={'24'} height={'24'} viewBox={'0 0 24 24'} />
       </button>
       {paginationRange.map(pageNumber => {
         if (pageNumber === DOTS) {
@@ -81,11 +83,11 @@ const Pagination = (props: PaginationProps) => {
         onKeyDown={handleKeyDownNext}
         disabled={currentPage === lastPage}
       >
-        {/*<Icon iconId={'arrow-pagination-right'} />*/}
+        <ArrowIosForward width={'24'} height={'24'} viewBox={'0 0 24 24'} />
       </button>
 
       <div className={s.blockSelector}>
-        <span style={{ color: 'white' }}>Показать</span>
+        <Typography variant={TypographyVariant.regular_text_14}>Показать</Typography>
         <Selector className={s.selector} onValueChange={setPageSize} value={pageSize}>
           <SelectItem value={'10'}>10</SelectItem>
           <SelectItem value={'20'}>20</SelectItem>
@@ -93,7 +95,7 @@ const Pagination = (props: PaginationProps) => {
           <SelectItem value={'50'}>50</SelectItem>
           <SelectItem value={'100'}>100</SelectItem>
         </Selector>
-        <span style={{ color: 'white' }}>на странице</span>
+        <Typography variant={TypographyVariant.regular_text_14}>на странице</Typography>
       </div>
     </div>
   )
