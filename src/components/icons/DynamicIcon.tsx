@@ -1,8 +1,10 @@
 import { forwardRef, memo, Ref, SVGProps } from 'react'
 import * as icons from './iconComponents'
 
+export type IconId = keyof typeof icons
+
 interface DynamicIconProps extends SVGProps<SVGSVGElement> {
-  iconId: keyof typeof icons
+  iconId: IconId
 }
 
 const DynamicIcon = ({ iconId, ...props }: DynamicIconProps, ref: Ref<SVGSVGElement>) => {

@@ -1,16 +1,19 @@
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import s from './styles.module.scss'
 import { Fragment } from 'react'
-import { DynamicMenuItem, IconProps } from './dynamicMenuItem'
+import { DynamicMenuItem } from './dynamicMenuItem'
+import { IconId } from '../icons/DynamicIcon.tsx'
+import { DynamicIcon } from '../icons'
+import { Typography, TypographyVariant } from '../typography'
 
 interface Trigger {
   img?: string
-  icon?: 'more'
+  icon?: IconId
 }
 
 interface BaseItemSetting {
   title: string
-  icon: IconProps
+  icon: IconId
   disabled?: boolean
 }
 
@@ -54,6 +57,7 @@ export const DropDownMenu = (props: DropDownMenuProps) => {
             href={el.href || ''}
           />
         </DropdownMenu.Item>
+
         {i < items.length - 1 && <DropdownMenu.Separator className={s.Separator} />}
       </Fragment>
     )
@@ -63,7 +67,7 @@ export const DropDownMenu = (props: DropDownMenuProps) => {
     <DropdownMenu.Root>
       <DropdownMenu.Trigger asChild>
         <button className={s.triggerButton} aria-label="Customise options">
-          {/*{trigger.icon && <Icon iconId={trigger.icon} width="24" height="24" viewBox="0 0 24 24"/>}*/}
+          {trigger.icon && <DynamicIcon width={24} height={24} iconId={trigger.icon} />}
           {trigger.img && <img src={trigger.img} alt={trigger.img} />}
         </button>
       </DropdownMenu.Trigger>
@@ -83,8 +87,12 @@ export const DropDownMenu = (props: DropDownMenuProps) => {
                 <a className={s.profile} href={profile.href}>
                   <img src={profile.img} alt={profile.img} />
                   <div>
-                    <span className={s.userName}>{profile.userName}</span>
-                    <span className={s.userEmail}>{profile.email}</span>
+                    <Typography variant={TypographyVariant.regular_text_16} className={s.userName}>
+                      {profile.userName}
+                    </Typography>
+                    <Typography variant={TypographyVariant.regular_text_16} className={s.userEmail}>
+                      {profile.email}
+                    </Typography>
                   </div>
                 </a>
               </DropdownMenu.Item>
