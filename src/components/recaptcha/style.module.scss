@@ -1,0 +1,77 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 300px;
+  height: 79px;
+  padding: 0 12px;
+  span {
+    cursor: default;
+  }
+}
+
+.error {
+  padding: 8px 7px 0 7px;
+  max-width: 300px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid red;
+}
+
+.errorText {
+  cursor: pointer;
+  font-size: 10px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  width: 100%;
+  padding: 13px 0;
+  color: #ff0000;
+}
+
+.verificationBlock {
+  max-width: 175px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  .errorText {
+    line-height: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(-75%);
+  }
+}
+
+.checkbox {
+  cursor: pointer;
+  all: revert;
+  width: 20px;
+  height: 20px;
+}
+
+.text {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  font-family: 'Roboto', sans-serif;
+}
+
+.loader {
+  border: 4px solid transparent;
+  border-radius: 50%;
+  border-top: 4px solid #4d8df4;
+  width: 26px;
+  height: 26px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
