@@ -1,0 +1,178 @@
+button {
+  all: unset;
+}
+
+.root {
+  position: relative;
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 300px;
+  padding: 16px 24px;
+
+  background: var(--color-dark-500);
+  border: 1px solid var(--color-dark-300);
+}
+
+.nav {
+  position: absolute;
+  top: 16px;
+  right: 24px;
+}
+
+.chevron {
+  width: 14px;
+  fill: var(--color-light-100);
+}
+
+.button_next,
+.button_previous {
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+
+  background: var(--color-dark-100);
+  border-radius: 50%;
+
+  transition: background 0.3s ease;
+
+  &:hover {
+    background: var(--color-dark-300);
+    transition: background 0.3s ease;
+  }
+}
+
+.month_caption {
+  padding: 6px;
+
+  .caption_label {
+    padding: 8px;
+
+    font-size: var(--font-size-m);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-m);
+    color: var(--color-light-100);
+  }
+}
+
+.month_grid {
+  border-collapse: collapse;
+  width: 100%;
+
+  .weekdays {
+    height: 66px;
+    color: var(--color-light-900);
+
+    .weekday {
+      font-size: var(--font-size-m);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--line-height-m);
+    }
+  }
+
+  .weeks {
+    .week {
+      text-align: center;
+
+      .day {
+        cursor: pointer;
+        width: 36px;
+        height: 36px;
+
+        &:hover:not(.focusedRange) {
+          background: var(--color-primary-700);
+          border-radius: 50%;
+          transition: background 0.2s ease;
+        }
+
+        .day_button {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          width: 100%;
+          height: 100%;
+
+          font-size: var(--font-size-m);
+          font-weight: var(--font-weight-regular);
+          line-height: var(--line-height-m);
+        }
+      }
+
+      /* Стили для сегодняшнего дня */
+      .today {
+        color: var(--color-primary-500);
+
+        &:hover {
+          color: var(--color-primary-100);
+        }
+      }
+
+      /* Стили для выбранного дня */
+      .selected {
+        background: var(--color-primary-900);
+        border-radius: 50%;
+        transition:
+          background 0.3s ease,
+          border-radius 0.3s ease;
+      }
+
+      /* Предыдущие(следующие) дни месяца */
+      .outside {
+        color: var(--color-light-900);
+      }
+
+      .focusedSingle,
+      .focusedRange {
+        border-radius: 50%;
+        outline: 2px solid var(--color-primary-900);
+        transition: border-radius 0.3s ease;
+      }
+
+      // Состояние rang
+      .range_end,
+      .range_start,
+      .range_middle {
+        background: var(--color-primary-900);
+        transition: background 0.3s ease;
+      }
+
+      .range_end {
+        border-radius: 0 50% 50% 0;
+        transition: border-radius 0.3s ease;
+      }
+
+      .range_start {
+        border-radius: 50% 0 0 50%;
+        transition: border-radius 0.3s ease;
+      }
+
+      .range_middle {
+        border-radius: 0;
+      }
+    }
+  }
+}
+
+/* Выделение выходных (суббота и воскресенье) */
+.weekend {
+  color: var(--color-danger-300); /* Цвет текста для выходных */
+}
+
+.selectedMultiple {
+  background: var(--color-primary-900);
+  border-radius: 0;
+  transition:
+    border-radius 0.4s ease,
+    background 0.4s ease;
+}
+
+.singleRange {
+  background: var(--color-primary-900);
+  border-radius: 0;
+}
