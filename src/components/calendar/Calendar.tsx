@@ -5,11 +5,15 @@ import { endOfWeek, startOfWeek } from 'date-fns'
 
 type ModeType = 'single' | 'range' // Определяем возможные режимы работы календаря для управления без пропсов
 
-export const Calendar = () => {
-  // Состояние для хранения выбранного диапазона дат (от даты и до даты)
-  const [selected, setSelected] = useState<DateRange | undefined>()
+type CalendarProps = {
+  selected: DateRange
+  onSelect: (date: DateRange) => void
+}
+export const Calendar = ({ selected, onSelect }: CalendarProps) => {
+  // // Состояние для хранения выбранного диапазона дат (от даты и до даты)
+  // const [selected, setSelected] = useState<DateRange | undefined>()
   // Состояние для хранения даты, на которую наведен курсор в режиме range для эффекта hover
-  const [hoveredDate, setHoveredDate] = useState<Date | undefined>()
+  const [hoveredDate, setHoveredDate] = useState<DateRange | undefined>()
   // Состояние для хранения текущего режима (single или range)
   const [mode, setMode] = useState<ModeType>('single')
   // Храним таймер для долгого нажатия
@@ -18,7 +22,8 @@ export const Calendar = () => {
   const handleWeekSelection = (date: Date) => {
     const start = startOfWeek(date, { weekStartsOn: 1 }) // Неделя начинается с понедельника
     const end = endOfWeek(date, { weekStartsOn: 1 }) // Получаем конец недели
-    setSelected({ from: start, to: end }) // Устанавливаем диапазон дат от начала до конца недели
+    onSelect({ from: start, to: end }) // Устанавливаем диапазон дат от начала до конца недели
+    // setSelected({ from: start, to: end }) // Устанавливаем диапазон дат от начала до конца недели
   }
 
   // Функция для вычисления всех дат между начальной выбранной датой и текущей ховерной датой
@@ -38,12 +43,12 @@ export const Calendar = () => {
   // Логика для долгого нажатия мыши
   const handleMouseDown = () => {
     // Устанавливаем таймер, который через 500 миллисекунд переключит режим на range or single
-    if (mode === 'single') longPressTimer.current = setTimeout(() => setMode('range'), 300)
+    if (mode === 'single') longPressTimer.current = setTimeout(() => setMode('range'), 200)
     if (mode === 'range') {
       longPressTimer.current = setTimeout(() => {
         setMode('single')
-        setSelected(undefined)
-      }, 300)
+        onSelect(undefined)
+      }, 200)
     }
   }
 
@@ -58,7 +63,7 @@ export const Calendar = () => {
     if (e.key === 'Escape') {
       // Если нажата клавиша Escape, сбрасываем режим и выбранные даты
       setMode('single')
-      setSelected(undefined)
+      onSelect(undefined)
     }
   }
   return (
@@ -67,7 +72,7 @@ export const Calendar = () => {
       <DayPicker
         mode={mode} // Устанавливаем текущий режим (single или range)
         selected={selected} // Передаём выбранные даты в компонент
-        onSelect={setSelected} // Обработчик выбора дат
+        onSelect={onSelect} // Обработчик выбора дат
         // Обновляем hoveredDate только в режиме range, в режиме single — отключаем обработчик
         onDayMouseEnter={mode === 'range' ? setHoveredDate : undefined}
         onDayMouseLeave={pagePreviewOff} // очищаем hoveredDate, когда курсор убирается

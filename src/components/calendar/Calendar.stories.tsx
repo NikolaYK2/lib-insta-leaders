@@ -31,6 +31,6 @@ export const Calendarik: Story = {
   args: {
     description:
       'Компонент Calendar поддерживает выбор как одного дня, так и диапазона дней. \n' +
-      'Подробней в Docs', // Это будет видно в Storybook
+      'Подробней в Docs',
   },
 }
