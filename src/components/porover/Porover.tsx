@@ -11,7 +11,6 @@ export const PopoverContent = React.forwardRef<
   <PopoverPrimitive.Portal>
     <PopoverPrimitive.Content sideOffset={5} {...props} ref={forwardedRef}>
       {children}
-      <PopoverPrimitive.Arrow />
     </PopoverPrimitive.Content>
   </PopoverPrimitive.Portal>
 ))
