@@ -70,11 +70,6 @@ input[type='search']::-webkit-search-results-decoration {
     color: var(--color-dark-100);
   }
 
-  &:focus-within {
-    color: var(--color-light-100);
-    border-color: var(--color-primary-500);
-  }
-
   &:focus {
     color: var(--color-light-100);
     border-color: var(--color-light-100);
