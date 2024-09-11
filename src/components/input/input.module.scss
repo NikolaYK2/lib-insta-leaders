@@ -2,7 +2,7 @@ input[type='search']::-webkit-search-decoration,
 input[type='search']::-webkit-search-cancel-button,
 input[type='search']::-webkit-search-results-button,
 input[type='search']::-webkit-search-results-decoration {
-  -webkit-appearance: none;
+  appearance: none;
 }
 
 .box {
@@ -15,17 +15,14 @@ input[type='search']::-webkit-search-results-decoration {
   position: relative;
   display: flex;
   align-items: center;
+
   .searchIcon {
     color: var(--color-light-900);
-  
-    &:focus {
-      color: 
-      var(--color-light-100);
-    }
-  
   }
-  
 
+  &:focus-within .searchIcon {
+    color: var(--color-light-100);
+  }
 }
 
 .iconStart {
@@ -39,7 +36,6 @@ input[type='search']::-webkit-search-results-decoration {
 
   width: 20px;
   height: 20px;
-
 }
 
 .iconEnd {
@@ -59,38 +55,34 @@ input[type='search']::-webkit-search-results-decoration {
   width: 100%;
   height: 36px;
   padding: 6px 12px;
-  font-family: 'Roboto';
-  line-height: var(--line-height-m);
+
   font-size: var(--font-size-m);
   font-weight: var(--font-weight-regular);
-  padding: 6px 12px;
+  line-height: var(--line-height-m);
   color: var(--color-light-900);
+
   background-color: var(--color-dark-500);
   border: 1px solid var(--color-dark-100);
   border-radius: 2px;
-
   outline: none;
 
-  &:active {
+  &:disabled {
+    color: var(--color-dark-100);
+  }
+
+  &:focus-within {
+    color: var(--color-light-100);
     border-color: var(--color-primary-500);
   }
 
   &:focus {
-    border-color: var(--color-light-100);
     color: var(--color-light-100);
-
-    .searchIcon {
-      color: var(--color-light-100);
-    }
+    border-color: var(--color-light-100);
   }
 
   &:hover:not(&:disabled) {
-    border-color: var(--color-light-900);
     cursor: pointer;
-  }
-
-  &:disabled {
-    color: var(--color-dark-100);
+    border-color: var(--color-light-900);
   }
 
   &.error {
@@ -99,9 +91,9 @@ input[type='search']::-webkit-search-results-decoration {
 
   &[data-icon*='start'] {
     padding-left: 36px;
+
     &:focus {
-      color: 
-      var(--color-light-100);
+      color: var(--color-light-100);
     }
   }
 
@@ -110,20 +102,23 @@ input[type='search']::-webkit-search-results-decoration {
   }
 }
 
-
 .errorMessage {
-  color: var(--color-danger-300);
-  line-height: var(--line-height-m);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-m);
+  color: var(--color-danger-300);
 }
 
 .clearButton {
   all: unset;
+
   cursor: pointer;
+
   position: absolute;
   right: 5px;
+
   width: 20px;
   height: 20px;
+
   color: var(--color-dark-100);
 }
