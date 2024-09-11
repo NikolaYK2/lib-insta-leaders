@@ -1,11 +1,10 @@
 import { Meta, StoryObj } from '@storybook/react'
 import { Slider } from './Slider'
 import { useState } from 'react'
-// import { useState } from 'react'
 
 const meta = {
   component: Slider,
-  title: 'libITL/Slider',
+  title: 'components/Slider',
 } satisfies Meta<typeof Slider>
 
 export default meta
