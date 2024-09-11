@@ -26,9 +26,9 @@ export const TableRow = forwardRef<HTMLTableRowElement, HTMLAttributes<HTMLTable
 )
 
 export const TableHead = forwardRef<HTMLTableCellElement, ThHTMLAttributes<HTMLTableCellElement>>(
-  ({ className, ...props }, ref) => <th ref={ref} className={clsx(className)} {...props} />
+  ({ className, ...props }, ref) => <th ref={ref} className={clsx(s.tHead, className)} {...props} />
 )
 
 export const TableCell = forwardRef<HTMLTableCellElement, TdHTMLAttributes<HTMLTableCellElement>>(
-  ({ className, ...props }, ref) => <td ref={ref} className={clsx(className)} {...props} />
+  ({ className, ...props }, ref) => <td ref={ref} className={clsx(s.tCell, className)} {...props} />
 )
