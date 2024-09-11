@@ -1,0 +1,62 @@
+.Root {
+  --scrollbar-size: 6px;
+
+  overflow: hidden;
+}
+
+.Viewport {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+
+.Scrollbar {
+  /* disable browser handling of all panning and zooming gestures on touch devices */
+  touch-action: none;
+
+  /* ensures no selection */
+  user-select: none;
+
+  display: flex;
+
+
+  background-color: var(--color-dark-300);
+  border-radius: 9999px;
+
+
+  &[data-orientation='vertical'] {
+    width: var(--scrollbar-size);
+  }
+
+  &[data-orientation='horizontal'] {
+    flex-direction: column;
+    height: var(--scrollbar-size);
+  }
+}
+
+.Thumb {
+  position: relative;
+  flex: 1;
+  background: var(--color-dark-100);
+  border-radius: 9999px;
+
+  /* increase target size for touch devices https://www.w3.org/WAI/WCAG21/Understanding/target-size.html */
+  &::before {
+    content: '';
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 100%;
+    min-width: 44px;
+    height: 100%;
+    min-height: 44px;
+  }
+
+  &:hover {
+    background: var(--color-light-900);
+  }
+}
+
