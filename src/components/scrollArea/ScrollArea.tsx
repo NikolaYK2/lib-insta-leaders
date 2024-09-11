@@ -7,7 +7,7 @@ const ScrollArea = forwardRef<
   ElementRef<typeof ScrollAreaPrimitive.Root>,
   ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.Root>
 >(({ className, children, ...props }, ref) => (
-  <ScrollAreaPrimitive.Root ref={ref} className={clsx(s.Root, className)} type={'auto'} {...props}>
+  <ScrollAreaPrimitive.Root ref={ref} className={clsx(s.Root, className)} {...props}>
     <ScrollAreaPrimitive.Viewport className={s.Viewport}>{children}</ScrollAreaPrimitive.Viewport>
     <ScrollBar />
     <ScrollAreaPrimitive.Corner />
