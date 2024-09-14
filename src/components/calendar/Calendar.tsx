@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react'
 import { DayEventHandler, DayPicker } from 'react-day-picker'
 import s from './Calendar.module.scss'
 import { endOfWeek, startOfWeek } from 'date-fns'
-import { DataType } from '../picker'
+import { DataType } from '../picker/lib/hooks/useSelectedCalendar.ts'
 
 type ModeType = 'single' | 'range' // Определяем возможные режимы работы календаря для управления без пропсов
 

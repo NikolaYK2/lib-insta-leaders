@@ -1,20 +1,23 @@
 import React, { useState } from 'react'
 import { format, isValid, parse } from 'date-fns'
-import { TextField } from '../../input'
 import { PickerCalendar, PickerCalendarProps } from '../PickerCalendar'
-import s from './InputDataPicker.module.scss'
 import clsx from 'clsx'
-import { DateRange } from 'react-day-picker'
+import s from './InputDataPicker.module.scss'
+import { TextField } from '../../input'
+import { DataType } from '../lib/hooks/useSelectedCalendar.ts'
 
-export type DataType = DateRange | Date | undefined
+type InputDataPickerProps = PickerCalendarProps & {
+  labelInput: string
+}
 export const InputDataPicker = ({
   error,
   disabled,
   sideOffsetContent = 0,
-}: PickerCalendarProps) => {
+  selected,
+  onSelect,
+  labelInput = '',
+}: InputDataPickerProps) => {
   const [month, setMonth] = useState(new Date())
-
-  const [selectedDate, setSelectedDate] = useState<DataType>(undefined)
 
   const [inputValue, setInputValue] = useState('')
 
@@ -23,10 +26,10 @@ export const InputDataPicker = ({
   const handleDayPickerSelect = (date: DataType) => {
     if (!date) {
       setInputValue('')
-      setSelectedDate(undefined)
+      onSelect(undefined)
     } else {
       if (date instanceof Date) {
-        setSelectedDate(date)
+        onSelect(date)
         setInputValue(format(date, 'MM.dd.yyyy'))
       }
     }
@@ -38,18 +41,19 @@ export const InputDataPicker = ({
     const parsedDate = parse(e.target.value, 'MM.dd.yyyy', new Date())
 
     if (isValid(parsedDate)) {
-      setSelectedDate(parsedDate)
+      onSelect(parsedDate)
       setMonth(parsedDate)
     } else {
-      setSelectedDate(undefined)
+      onSelect(undefined)
     }
   }
   return (
     <div className={s.container}>
       <TextField
         disabled={disabled}
+        label={labelInput}
         className={clsx(s.input, error && s.error)}
-        type="text"
+        type={'text'}
         value={inputValue}
         placeholder={'MM.dd.yyyy'}
         onChange={handleInputChange}
@@ -57,7 +61,7 @@ export const InputDataPicker = ({
       <PickerCalendar
         mouth={month}
         setMouth={setMonth}
-        selected={selectedDate}
+        selected={selected}
         onSelect={handleDayPickerSelect}
         isActive={isActive}
         setIsActive={setIsActive}
