@@ -4,7 +4,9 @@ import { TextField } from '../../input'
 import { PickerCalendar, PickerCalendarProps } from '../PickerCalendar'
 import s from './InputDataPicker.module.scss'
 import clsx from 'clsx'
+import { DateRange } from 'react-day-picker'
 
+export type DataType = DateRange | Date | undefined
 export const InputDataPicker = ({
   error,
   disabled,
@@ -12,19 +14,21 @@ export const InputDataPicker = ({
 }: PickerCalendarProps) => {
   const [month, setMonth] = useState(new Date())
 
-  const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined)
+  const [selectedDate, setSelectedDate] = useState<DataType>(undefined)
 
   const [inputValue, setInputValue] = useState('')
 
   const [isActive, setIsActive] = useState(false)
 
-  const handleDayPickerSelect = (date: Date) => {
+  const handleDayPickerSelect = (date: DataType) => {
     if (!date) {
       setInputValue('')
       setSelectedDate(undefined)
     } else {
-      setSelectedDate(date)
-      setInputValue(format(date, 'MM.dd.yyyy'))
+      if (date instanceof Date) {
+        setSelectedDate(date)
+        setInputValue(format(date, 'MM.dd.yyyy'))
+      }
     }
   }
 
@@ -66,3 +70,5 @@ export const InputDataPicker = ({
     </div>
   )
 }
+
+InputDataPicker.displayName = 'InputDataPicker'

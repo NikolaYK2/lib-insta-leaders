@@ -68,3 +68,5 @@ export const PickerCalendar = ({
     </Popover>
   )
 }
+
+PickerCalendar.displayName = 'PickerCalendar'

@@ -1,8 +1,8 @@
-import { ReactNode, useState } from 'react'
+import { useState } from 'react'
 import { format } from 'date-fns'
-import { DateRange } from 'react-day-picker'
 import { CalendarProps } from '../../calendar/Calendar'
 import { PickerCalendar, PickerCalendarProps } from '../PickerCalendar'
+import { DataType } from '../inputPicker/InputDataPicker'
 
 export type DataPickerProps = CalendarProps & PickerCalendarProps
 export const DatePicker = ({
@@ -12,7 +12,7 @@ export const DatePicker = ({
   disabled = false,
   options = true,
 }: DataPickerProps) => {
-  const [data, setData] = useState<DateRange | Date | undefined>()
+  const [data, setData] = useState<DataType>()
 
   const [isActive, setIsActive] = useState(false)
   // Функция для отображения выбранной даты или диапазона
@@ -54,3 +54,5 @@ export const DatePicker = ({
     />
   )
 }
+
+DatePicker.dispalyName = 'DatePicker'

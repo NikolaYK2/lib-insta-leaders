@@ -1,13 +1,14 @@
 import React, { useRef, useState } from 'react'
-import { DateRange, DayEventHandler, DayPicker } from 'react-day-picker'
+import { DayEventHandler, DayPicker } from 'react-day-picker'
 import s from './Calendar.module.scss'
 import { endOfWeek, startOfWeek } from 'date-fns'
+import { DataType } from '../picker'
 
 type ModeType = 'single' | 'range' // Определяем возможные режимы работы календаря для управления без пропсов
 
 export type CalendarProps = {
-  selected: DateRange | Date | undefined
-  onSelect: (selected: DateRange | Date | undefined) => void
+  selected: DataType
+  onSelect: (selected: DataType) => void
   mouth?: Date
   setMouth?: (mouth: Date) => void
   options?: boolean
@@ -115,3 +116,5 @@ const Calendar = ({
   )
 }
 export default Calendar
+
+Calendar.displayName = 'Calendar'
