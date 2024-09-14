@@ -12,13 +12,15 @@
     }
   }
 
-  .input input:active {
-    border-color: var(--color-dark-100);
+  .input {
+    input:active {
+      border-color: var(--color-dark-100);
+    }
   }
 
   .trigger {
     position: absolute;
-    top: 50%;
+    top: 57%;
     right: 12px;
     transform: translateY(-50%);
 
