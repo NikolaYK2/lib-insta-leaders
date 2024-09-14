@@ -10,7 +10,7 @@ import s from './PickerCalendar.module.scss'
 
 export type PickerCalendarProps = CalendarProps & {
   isActive?: boolean
-  setIsActive: (isActive: boolean) => void
+  setIsActive?: (isActive: boolean) => void
   className?: string
   error?: ReactNode
   title?: ReactNode
@@ -50,10 +50,7 @@ export const PickerCalendar = ({
           />
         </Button>
       </PopoverTrigger>
-      <Typography
-        variant={TypographyVariant.small_text}
-        className={clsx(s.errorMessage, mouth && s.mod)}
-      >
+      <Typography variant={TypographyVariant.small_text} className={clsx(s.errorMessage)}>
         <small>{error}</small>
       </Typography>
       <PopoverContent className={s.popoverContent} sideOffset={sideOffsetContent}>
