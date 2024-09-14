@@ -1,48 +1,40 @@
 import React, { useRef, useState } from 'react'
-import { DateRange, DayPicker } from 'react-day-picker'
+import { DateRange, DayEventHandler, DayPicker } from 'react-day-picker'
 import s from './Calendar.module.scss'
 import { endOfWeek, startOfWeek } from 'date-fns'
 
 type ModeType = 'single' | 'range' // Определяем возможные режимы работы календаря для управления без пропсов
 
 type CalendarProps = {
-  selected: DateRange
-  onSelect: (date: DateRange) => void
+  selected: DateRange | Date | undefined
+  onSelect: (selected: DateRange | Date | undefined) => void
 }
-export const Calendar = ({ selected, onSelect }: CalendarProps) => {
-  // // Состояние для хранения выбранного диапазона дат (от даты и до даты)
-  // const [selected, setSelected] = useState<DateRange | undefined>()
-  // Состояние для хранения даты, на которую наведен курсор в режиме range для эффекта hover
-  const [hoveredDate, setHoveredDate] = useState<DateRange | undefined>()
-  // Состояние для хранения текущего режима (single или range)
+const Calendar = ({ selected, onSelect }: CalendarProps) => {
   const [mode, setMode] = useState<ModeType>('single')
-  // Храним таймер для долгого нажатия
-  const longPressTimer = useRef<NodeJS.Timeout | null>(null) // Для хранения таймера долгого нажатия
-  // Обработчик двойного клика для выбора всей недели
-  const handleWeekSelection = (date: Date) => {
-    const start = startOfWeek(date, { weekStartsOn: 1 }) // Неделя начинается с понедельника
-    const end = endOfWeek(date, { weekStartsOn: 1 }) // Получаем конец недели
-    onSelect({ from: start, to: end }) // Устанавливаем диапазон дат от начала до конца недели
-    // setSelected({ from: start, to: end }) // Устанавливаем диапазон дат от начала до конца недели
-  }
+  const [hoveredDate, setHoveredDate] = useState<Date | undefined>()
 
-  // Функция для вычисления всех дат между начальной выбранной датой и текущей ховерной датой
-  // нужно исключительно для эффекта ховера
   const getRangePreview = () => {
-    if (!selected?.from || !hoveredDate) return undefined // Если начальная или текущая дата отсутствует, возвращаем undefined
+    // Проверяем, является ли selected объектом типа DateRange и он не undefined
+    if (!selected || !('from' in selected) || !selected.from || !hoveredDate) return undefined // Если начальная или текущая дата отсутствует, возвращаем undefined
+
     // Возвращаем диапазон: от минимальной даты до максимальной
     if (hoveredDate < selected.from) {
       return { from: hoveredDate, to: selected.from }
     }
     return { from: selected.from, to: hoveredDate }
   }
-
-  // Сбрасываем состояние hoveredDate (например, когда мышь уходит с календаря)
-  const pagePreviewOff = () => setHoveredDate(undefined)
+  // Храним таймер для долгого нажатия
+  const longPressTimer = useRef<number | undefined>(undefined) // Для хранения таймера долгого нажатия
+  // Обработчик двойного клика для выбора всей недели
+  const handleWeekSelection = (date: Date) => {
+    const start = startOfWeek(date, { weekStartsOn: 1 }) // Неделя начинается с понедельника
+    const end = endOfWeek(date, { weekStartsOn: 1 }) // Получаем конец недели
+    onSelect({ from: start, to: end }) // Устанавливаем диапазон дат от начала до конца недели
+  }
 
   // Логика для долгого нажатия мыши
   const handleMouseDown = () => {
-    // Устанавливаем таймер, который через 500 миллисекунд переключит режим на range or single
+    // Устанавливаем таймер, который через 200 миллисекунд переключит режим на range or single
     if (mode === 'single') longPressTimer.current = setTimeout(() => setMode('range'), 200)
     if (mode === 'range') {
       longPressTimer.current = setTimeout(() => {
@@ -51,11 +43,20 @@ export const Calendar = ({ selected, onSelect }: CalendarProps) => {
       }, 200)
     }
   }
-
+  //выбор недели за двойной клик
+  const handleDayClick: DayEventHandler<React.MouseEvent> = (day, _, event) => {
+    if (event.detail === 2) {
+      if (mode === 'single') {
+        handleWeekSelection(day) // Выбираем неделю
+      } else {
+        setMode('single') // Сбрасываем в режим single
+      }
+    }
+  }
   // Очищаем таймер, если мышь отпустили до истечения времени
   const handleMouseUp = () => {
     if (longPressTimer.current) {
-      clearTimeout(longPressTimer.current) // Очищаем таймер, если мышь отпустили до 500ms
+      clearTimeout(longPressTimer.current!) // Очищаем таймер, если мышь отпустили до 500ms
     }
   }
   // Обработчик нажатия клавиши Escape для возвращения в режим single
@@ -66,26 +67,16 @@ export const Calendar = ({ selected, onSelect }: CalendarProps) => {
       onSelect(undefined)
     }
   }
+
   return (
     // Добавляем обработчики событий нажатия клавиш и мыши
     <div onKeyDown={handleKeyDown} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp}>
       <DayPicker
-        mode={mode} // Устанавливаем текущий режим (single или range)
-        selected={selected} // Передаём выбранные даты в компонент
+        mode={mode} // Устанавливаем либо 'single', либо 'range'
         onSelect={onSelect} // Обработчик выбора дат
-        // Обновляем hoveredDate только в режиме range, в режиме single — отключаем обработчик
+        selected={selected as any}
+        onDayClick={handleDayClick}
         onDayMouseEnter={mode === 'range' ? setHoveredDate : undefined}
-        onDayMouseLeave={pagePreviewOff} // очищаем hoveredDate, когда курсор убирается
-        onDayClick={(day, modifiers, event) => {
-          // Если произошёл двойной клик, выделяем всю неделю
-          if (event.detail === 2) {
-            if (mode === 'single') {
-              handleWeekSelection(day) // Выделяем неделю в режиме single
-            } else {
-              setMode('single') // Сбрасываем режим в single при двойном клике в режиме range
-            }
-          }
-        }}
         weekStartsOn={1} // Неделя начинается с понедельника
         // Модификаторы для кастомизации стилей
         modifiers={{
@@ -94,8 +85,8 @@ export const Calendar = ({ selected, onSelect }: CalendarProps) => {
         }}
         // Кастомные стили для модификаторов
         modifiersClassNames={{
-          weekend: s.weekend, // Стили для выходных
-          hoverRange: s.selectedMultiple, // Стили для выделения диапазона при наведении
+          weekend: s.weekend ?? '', // Стили для выходных
+          hoverRange: s.selectedMultiple ?? '', // Стили для выделения диапазона при наведении
         }}
         // Кастомные классы для разных состояний
         classNames={{
@@ -105,7 +96,9 @@ export const Calendar = ({ selected, onSelect }: CalendarProps) => {
           focused: mode === 'range' ? s.focusedRange : s.focusedSingle, // Стили для фокусировки в режиме range
         }}
         showOutsideDays // Отображаем дни из предыдущего и следующего месяца
+        required={false}
       />
     </div>
   )
 }
+export default Calendar
