@@ -1,5 +1,6 @@
 import { DatePicker } from './DataPicker'
 import { Meta, StoryObj } from '@storybook/react'
+import { useSelectedCalendar } from '../lib/hooks/useSelectedCalendar'
 
 const meta: Meta<typeof DatePicker> = {
   title: 'Components/Picker',
@@ -12,23 +13,36 @@ export default meta
 type Story = StoryObj<typeof DatePicker>
 
 export const DataPicker: Story = {
-  name: 'DataPicker',
+  name: 'DatePicker',
+  render: () => {
+    const { selectedDate, setSelectedDate } = useSelectedCalendar()
+    return <DatePicker selected={selectedDate} onSelect={setSelectedDate} />
+  },
 }
 
 export const DataPickerDisabled: Story = {
-  args: {
-    disabled: true,
+  render: () => {
+    const { selectedDate, setSelectedDate } = useSelectedCalendar()
+    return <DatePicker selected={selectedDate} onSelect={setSelectedDate} disabled />
   },
 }
-export const DataPickerError: Story = {
-  args: {
-    error: 'Я кабздец намучился с этим календарем!',
+export const DatePickerError: Story = {
+  render: () => {
+    const { selectedDate, setSelectedDate } = useSelectedCalendar()
+    return (
+      <DatePicker
+        selected={selectedDate}
+        onSelect={setSelectedDate}
+        error={'Я кабздец намучился с этим календарем!'}
+      />
+    )
   },
 }
 
-export const DataPickerOptionsFalse: Story = {
-  args: {
-    options: false,
+export const DatePickerOptionsFalse: Story = {
+  render: () => {
+    const { selectedDate, setSelectedDate } = useSelectedCalendar()
+    return <DatePicker selected={selectedDate} onSelect={setSelectedDate} options={false} />
   },
   parameters: {
     docs: {
@@ -39,8 +53,9 @@ export const DataPickerOptionsFalse: Story = {
   },
 }
 export const DataPickerOptionsTrue: Story = {
-  args: {
-    options: true,
+  render: () => {
+    const { selectedDate, setSelectedDate } = useSelectedCalendar()
+    return <DatePicker selected={selectedDate} onSelect={setSelectedDate} />
   },
   parameters: {
     docs: {

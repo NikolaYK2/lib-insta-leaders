@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { format } from 'date-fns'
 import { CalendarProps } from '../../calendar/Calendar'
 import { PickerCalendar, PickerCalendarProps } from '../PickerCalendar'
-import { DataType } from '../inputPicker/InputDataPicker'
 
 export type DataPickerProps = CalendarProps & PickerCalendarProps
 export const DatePicker = ({
@@ -11,30 +10,30 @@ export const DatePicker = ({
   className = '',
   disabled = false,
   options = true,
+  selected,
+  onSelect,
 }: DataPickerProps) => {
-  const [data, setData] = useState<DataType>()
-
   const [isActive, setIsActive] = useState(false)
   // Функция для отображения выбранной даты или диапазона
   const renderDateLabel = () => {
-    if (!data) {
+    if (!selected) {
       return <span>{title}</span>
     }
 
-    if ('from' in data && data.from instanceof Date) {
+    if ('from' in selected && selected.from instanceof Date) {
       // Если это DateRange и выбран диапазон (есть и from, и to)
-      if (data.to) {
+      if (selected.to) {
         return (
           <>
-            {format(data.from, 'MM.dd.yyyy')} - {format(data.to, 'MM.dd.yyyy')}
+            {format(selected.from, 'MM.dd.yyyy')} - {format(selected.to, 'MM.dd.yyyy')}
           </>
         )
       }
     }
 
     // Если это просто одиночная дата (Date)
-    if (data instanceof Date) {
-      return format(data, 'MM.dd.yyyy')
+    if (selected instanceof Date) {
+      return format(selected, 'MM.dd.yyyy')
     }
 
     return <span>Invalid date</span> // На случай ошибки
@@ -42,8 +41,8 @@ export const DatePicker = ({
 
   return (
     <PickerCalendar
-      selected={data}
-      onSelect={setData}
+      selected={selected}
+      onSelect={onSelect}
       isActive={isActive}
       setIsActive={setIsActive}
       error={error}
