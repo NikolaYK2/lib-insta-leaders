@@ -23,6 +23,13 @@ export const InputPicker: Story = {
       />
     )
   },
+  parameters: {
+    docs: {
+      description: {
+        story: 'что бы управлять компонентой можно использовать хук useSelectedCalendar()',
+      },
+    },
+  },
 }
 export const InputPickerDisabled: Story = {
   render: () => {

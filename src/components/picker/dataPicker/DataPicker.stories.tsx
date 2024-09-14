@@ -18,6 +18,13 @@ export const DataPicker: Story = {
     const { selectedDate, setSelectedDate } = useSelectedCalendar()
     return <DatePicker selected={selectedDate} onSelect={setSelectedDate} />
   },
+  parameters: {
+    docs: {
+      description: {
+        story: 'что бы управлять компонентой можно использовать хук useSelectedCalendar()',
+      },
+    },
+  },
 }
 
 export const DataPickerDisabled: Story = {
