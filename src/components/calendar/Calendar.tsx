@@ -33,6 +33,8 @@ const Calendar = ({
     }
     return { from: selected.from, to: hoveredDate }
   }
+  // Сбрасываем состояние hoveredDate (например, когда мышь уходит с календаря)
+  const pagePreviewOff = () => setHoveredDate(undefined)
   // Храним таймер для долгого нажатия
   const longPressTimer = useRef<number | undefined>(undefined) // Для хранения таймера долгого нажатия
   // Обработчик двойного клика для выбора всей недели
@@ -91,6 +93,7 @@ const Calendar = ({
         selected={selected as any}
         onDayClick={handleDayClick}
         onDayMouseEnter={mode === 'range' ? setHoveredDate : undefined}
+        onDayMouseLeave={pagePreviewOff} // очищаем hoveredDate, когда курсор убирается
         weekStartsOn={1} // Неделя начинается с понедельника
         // Модификаторы для кастомизации стилей
         modifiers={{
