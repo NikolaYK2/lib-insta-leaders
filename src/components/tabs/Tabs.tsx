@@ -13,7 +13,7 @@ export type TabType = {
 }
 
 type CommonProps = {
-  /** Use TabsContent components as children. */
+  /** Use TabsContent components as childrenSet. */
   children?: ReactNode
   /** An array of objects with the value and title of the tab.
    *  {value: string, title: string}

@@ -10,6 +10,7 @@ export enum TypographyVariant {
   bold_text_14 = 'bold_text_14',
   small_text = 'small_text',
   semibold_small_text = 'semibold_small_text',
+  smaller_text = 'smaller_text',
   regular_link = 'regular_link',
   small_link = 'small_link',
 }
