@@ -14,7 +14,7 @@ export interface PaginationProps {
   pageSize: string // Количество элементов на одной странице.
 }
 
-const Pagination = (props: PaginationProps) => {
+export const Pagination = (props: PaginationProps) => {
   const { onPageChange, totalCount, siblingCount = 1, currentPage, pageSize, setPageSize } = props
 
   const paginationRange = usePagination({ currentPage, totalCount, siblingCount, pageSize })
@@ -100,5 +100,3 @@ const Pagination = (props: PaginationProps) => {
     </div>
   )
 }
-
-export default Pagination
