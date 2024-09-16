@@ -9,7 +9,6 @@
   line-height: var(--line-height-l);
 }
 
-
 .h1 {
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
@@ -70,7 +69,14 @@
   line-height: var(--line-height-s);
 }
 
-.regular_link, a.regular_link {
+.smaller_text {
+  font-size: var(--font-size-xxs);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-xs);
+}
+
+.regular_link,
+a.regular_link {
   cursor: pointer;
 
   font-size: var(--font-size-s);
@@ -80,7 +86,8 @@
   text-decoration: underline;
 }
 
-.small_link, a.small_link {
+.small_link,
+a.small_link {
   cursor: pointer;
 
   font-size: var(--font-size-xs);

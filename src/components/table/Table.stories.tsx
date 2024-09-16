@@ -3,7 +3,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '.
 
 const meta = {
   component: Table,
-  title: 'libITL/Table',
+  title: 'components/Table',
 } satisfies Meta<typeof Table>
 
 export default meta

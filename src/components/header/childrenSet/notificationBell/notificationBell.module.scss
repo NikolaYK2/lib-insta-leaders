@@ -1,0 +1,15 @@
+.container {
+  position: relative;
+  display: inline-flex;
+  height: 24px;
+  padding-right: clamp(0px, 7.5vw - 48px, 48px);
+}
+
+.ellipse {
+  display: inline-flex;
+  margin-left: -13px;
+  background-color: var(--color-danger-500);
+  height: 13px;
+  padding: 2.5px;
+  border-radius: 6.5px/50%;
+}

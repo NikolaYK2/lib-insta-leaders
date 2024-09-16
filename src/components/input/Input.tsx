@@ -1,11 +1,9 @@
 import clsx from 'clsx'
-import { ReactNode, ComponentProps, forwardRef } from 'react'
+import { ReactNode, ComponentProps, forwardRef, useId } from 'react'
 import s from './input.module.scss'
 import { KeyboardEvent } from 'react'
-import SearchPicture from "./search-outline.svg"
-import ClosePicture from "./close.svg"
-import Eye from "./eye-outline.svg"
 import { Label, LabelProps } from '../label'
+import { DynamicIcon } from '../icons'
 
 export type TextFieldProps = {
   errorMessage?: string
@@ -37,20 +35,23 @@ export const TextField = /* @__PURE__ */ forwardRef<HTMLInputElement, TextFieldP
       password,
       type,
       labelColor,
+      id,
       ...rest
     },
     ref
   ) => {
     const showError = !!errorMessage && errorMessage.length > 0
+    const generatedId = useId()
+    const idToUse = id ?? generatedId
 
     
 
     if (search) {
-      iconStart = <img src={SearchPicture} />
+      iconStart = <DynamicIcon iconId={'Search'} width={20} className={s.searchIcon} />
       type = "search"
     }
     if (password) {
-      iconEnd = <img src={Eye} />
+      iconEnd = <DynamicIcon iconId={'EyeOutline'} width={20} color={"var(--color-light-100)"}/>
       type = "password"
     }
 
@@ -80,13 +81,13 @@ export const TextField = /* @__PURE__ */ forwardRef<HTMLInputElement, TextFieldP
 
     return (
       <div className={classNames.root}>
-        {label && <Label htmlFor="inputId" label={label} required={required} labelColor={labelColor} />}
+        {label && <Label htmlFor={idToUse} label={label} required={required} labelColor={labelColor}> 
         <div className={classNames.inputContainer}>
           {!!iconStart && <span className={classNames.iconStart}>{iconStart}</span>}
           <input
             className={classNames.input}
             data-icon={dataIcon}
-            id="inputId"
+            id={idToUse}
             name='text'
             onKeyDown={handleKeyDown}
             ref={ref}
@@ -96,14 +97,18 @@ export const TextField = /* @__PURE__ */ forwardRef<HTMLInputElement, TextFieldP
           />
           {isShowClearButton && (
             <button className={classNames.clearButton} onClick={onClearClick} type={'button'}>
-              {<img  src={ClosePicture}/>}
+              {<DynamicIcon iconId={'Close'} color={"var(--color-light-100)"}/>}
             </button>
           )}
           {!!iconEnd && <span className={classNames.iconEnd}>{iconEnd}</span>}
         </div>
 
         {showError && <span className={classNames.errorMessage}>{errorMessage}</span>}
+        </Label> }
+        
       </div>
     )
   }
 )
+
+TextField.displayName = "TextField";

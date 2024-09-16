@@ -1,11 +1,28 @@
 import { createRoot } from 'react-dom/client'
-import { ArrowIosForward, DynamicIcon } from './src'
+import { Header, LanguageSelector, LoginButton, NotificationBell, SignupButton } from './src'
 
 createRoot(document.getElementById('root')!).render(
   <div>
-    <b>This is Library of It-Leaders (Temporary)</b>
-    <div style={{ width: '200px', height: '200px', background: 'lightblue' }}>
-      <DynamicIcon iconId={'ArrowBackOutline'} width={24} color={'red'} />
-    </div>
+    <Header>
+      <NotificationBell missedCount={3} />
+      <LanguageSelector
+        onValueChange={value => {
+          console.log(`LanguageSelector: ${value} selected`)
+        }}
+      />
+      <LoginButton
+        onClick={() => {
+          console.log('LoginButton: clicked')
+        }}
+      />
+      <SignupButton
+        onClick={() => {
+          console.log('SignupButton: clicked')
+        }}
+      />
+    </Header>
+    {/*<b>This is Library of It-Leaders (Temporary)</b>*/}
+    {/*<div style={{ width: '1000px', height: '400px', background: 'lightblue' }}>*/}
+    {/*</div>*/}
   </div>
 )
