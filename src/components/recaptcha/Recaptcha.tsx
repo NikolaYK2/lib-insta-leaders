@@ -3,7 +3,7 @@ import { Card } from '../card'
 import { DynamicIcon } from '../icons'
 import s from './style.module.scss'
 
-interface Recaptcha {
+interface RecaptchaProps {
   checked: boolean
   setChecked: () => void
   loading: boolean
@@ -17,7 +17,7 @@ export const Recaptcha = ({
   checked = false,
   loading = false,
   setChecked,
-}: Recaptcha) => {
+}: RecaptchaProps) => {
   return (
     <div className={error ? s.error : ''}>
       <Card className={s.wrapper}>
