@@ -45,7 +45,6 @@ export const Search = {
         onClearClick={() => setText('')}
         search
         value={text}
-        label={'some label'}
       />
     )
   },
