@@ -16,7 +16,7 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {
-    trigger: { icon: 'MoreVerticalOutline' },
+    trigger: { icon: 'MoreHorizontal' },
     isArrow: true,
     items: [
       { title: 'Learn', disabled: false, icon: 'PlayCircleOutline', onClick: () => alert('click') },
