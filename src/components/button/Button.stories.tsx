@@ -1,102 +1,122 @@
-import {Button} from "./Button";
-import {Meta, StoryObj} from "@storybook/react";
+import { Button } from './Button'
+import { Meta, StoryObj } from '@storybook/react'
+import { action } from '@storybook/addon-actions'
 
 const meta = {
-    component: Button,
-    title: "Components/Button",
-    tags: ['autodocs'],
-    argTypes: {
-        disabled: {
-            control: {type: 'boolean'},
-        },
-        fullWidth: {
-            control: {type: 'boolean'},
-        },
+  component: Button,
+  title: 'Components/Button',
+  tags: ['autodocs'],
+  argTypes: {
+    disabled: {
+      control: { type: 'boolean' },
     },
-} satisfies Meta<typeof Button>;
+    fullWidth: {
+      control: { type: 'boolean' },
+    },
+  },
+} satisfies Meta<typeof Button>
 
-export default meta;
+export default meta
 
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
-    args: {
-        children: "Some Primary Button",
-        variant: "primary",
-    },
-};
-
+  args: {
+    children: 'Some Primary Button',
+    variant: 'primary',
+    onClick: action('Button click'),
+  },
+}
 
 export const PrimaryAsLink: Story = {
-    args: {
-        disabled: true,
-        asChild: true,
-        children: (
-            <a href="#" target="_blank" rel="noopener noreferrer"
-               title={'new google.com page will be opened'}>
-                Some Primary Button As Link
-            </a>
-        ),
-        variant: "primary",
-    },
-};
+  args: {
+    disabled: true,
+    asChild: true,
+    children: (
+      <a
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+        title={'new google.com page will be opened'}
+      >
+        Some Primary Button As Link
+      </a>
+    ),
+    variant: 'primary',
+  },
+}
 
 export const Secondary: Story = {
-    args: {
-        children: "Some Secondary Button",
-        variant: "secondary",
-    },
-};
+  args: {
+    children: 'Some Secondary Button',
+    variant: 'secondary',
+    onClick: action('Button click'),
+  },
+}
 
 export const SecondaryAsLink: Story = {
-    args: {
-        asChild: true,
-        children: (
-            <a href="#" target="_blank" rel="noopener noreferrer"
-               title={'new google.com page will be opened'}>
-                Some Secondary Button As Link
-            </a>
-        ),
-        variant: "secondary",
-    },
-};
+  args: {
+    asChild: true,
+    children: (
+      <a
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+        title={'new google.com page will be opened'}
+      >
+        Some Secondary Button As Link
+      </a>
+    ),
+    variant: 'secondary',
+  },
+}
 
 export const Outlined: Story = {
-    args: {
-        children: "Some Outlined Button",
-        variant: 'outline',
-    },
+  args: {
+    children: 'Some Outlined Button',
+    variant: 'outline',
+    onClick: action('Button click'),
+  },
 }
 
 export const OutlineAsLink: Story = {
-    args: {
-        asChild: true,
-        children: (
-            <a href="#" target="_blank" rel="noopener noreferrer"
-               title={'new google.com page will be opened'}>
-                Some Outline Button As Link
-            </a>
-        ),
-        variant: "outline",
-    },
+  args: {
+    asChild: true,
+    children: (
+      <a
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+        title={'new google.com page will be opened'}
+      >
+        Some Outline Button As Link
+      </a>
+    ),
+    variant: 'outline',
+  },
 }
 
 export const Text: Story = {
-    args: {
-        children: "Some Text Button",
-        variant: 'text',
-    },
+  args: {
+    children: 'Some Text Button',
+    variant: 'text',
+    onClick: action('Button click'),
+  },
 }
 
 export const TextAsLink: Story = {
-    args: {
-        asChild: true,
-        children: (
-            <a href="#" target="_blank" rel="noopener noreferrer"
-               title={'new google.com page will be opened'}>
-                Some Text Button As Link
-            </a>
-        ),
-        variant: "text",
-    },
+  args: {
+    asChild: true,
+    children: (
+      <a
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+        title={'new google.com page will be opened'}
+      >
+        Some Text Button As Link
+      </a>
+    ),
+    variant: 'text',
+  },
 }

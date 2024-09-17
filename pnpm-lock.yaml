@@ -75,6 +75,9 @@ importers:
       '@it-incubator/stylelint-config':
         specifier: 2.0.0
         version: 2.0.0(stylelint-config-clean-order@6.1.0(stylelint@16.9.0(typescript@5.5.3)))(stylelint-config-standard-scss@13.1.0(postcss@8.4.41)(stylelint@16.9.0(typescript@5.5.3)))(stylelint@16.9.0(typescript@5.5.3))
+      '@storybook/addon-actions':
+        specifier: ^8.3.1
+        version: 8.3.1(storybook@8.2.9(@babel/preset-env@7.25.4(@babel/core@7.25.2)))
       '@storybook/addon-essentials':
         specifier: 8.2.9
         version: 8.2.9(storybook@8.2.9(@babel/preset-env@7.25.4(@babel/core@7.25.2)))
@@ -1613,6 +1616,11 @@ packages:
     resolution: {integrity: sha512-eh2teOqjga7aoClDVV+/b1gHJqsPwjiU1t+Hg/l4i2CkaBUNdYMEL90nR6fgReOdvvL5YhcPwJ8w38f9TrQcoQ==}
     peerDependencies:
       storybook: ^8.2.9
+
+  '@storybook/addon-actions@8.3.1':
+    resolution: {integrity: sha512-f00NxBNBcsMHqtwsOpRbZKrNMLdUjnSg1G6zYdVxAG7NwxzgpqPZm37I36ebFmgz/WO2XQ3ihxzfV2IKFuiZ6g==}
+    peerDependencies:
+      storybook: ^8.3.1
 
   '@storybook/addon-backgrounds@8.2.9':
     resolution: {integrity: sha512-eGmZAd742ORBbQ6JepzBCko/in62T4Xg9j9LVa+Cvz/7L1C/RQSuU6sUwbRAsXaz+PMVDksPDCUUNsXl3zUL7w==}
@@ -6001,6 +6009,15 @@ snapshots:
   '@sindresorhus/merge-streams@2.3.0': {}
 
   '@storybook/addon-actions@8.2.9(storybook@8.2.9(@babel/preset-env@7.25.4(@babel/core@7.25.2)))':
+    dependencies:
+      '@storybook/global': 5.0.0
+      '@types/uuid': 9.0.8
+      dequal: 2.0.3
+      polished: 4.3.1
+      storybook: 8.2.9(@babel/preset-env@7.25.4(@babel/core@7.25.2))
+      uuid: 9.0.1
+
+  '@storybook/addon-actions@8.3.1(storybook@8.2.9(@babel/preset-env@7.25.4(@babel/core@7.25.2)))':
     dependencies:
       '@storybook/global': 5.0.0
       '@types/uuid': 9.0.8

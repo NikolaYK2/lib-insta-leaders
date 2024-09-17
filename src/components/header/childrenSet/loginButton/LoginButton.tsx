@@ -1,8 +1,17 @@
-import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
+import { ElementRef, forwardRef } from 'react'
 import { Button } from '../../../button'
 import s from './loginButton.module.scss'
+import { ButtonProps } from 'react-day-picker'
+import { IconId } from '../../../icons/DynamicIcon.tsx'
 
-export type LoginButtonProps = ComponentPropsWithoutRef<'button'>
+export type LoginButtonProps = ButtonProps & {
+  mobileProps?: {
+    title: string
+    disabled: boolean
+    icon?: IconId
+    onClick?: () => void
+  }
+}
 
 export const LoginButton = forwardRef<ElementRef<'button'>, LoginButtonProps>(
   ({ onClick }, forwardedRef) => {
@@ -13,3 +22,5 @@ export const LoginButton = forwardRef<ElementRef<'button'>, LoginButtonProps>(
     )
   }
 )
+
+LoginButton.displayName = 'LoginButton'

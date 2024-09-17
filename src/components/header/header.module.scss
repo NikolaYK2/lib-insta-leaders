@@ -5,7 +5,7 @@
   top: 0;
   right: 0;
   left: 0;
-  padding-inline: clamp(0px, 10.75vw - 60px, 60px);
+  padding-inline: clamp(15px, 10.75vw - 60px, 60px);
 
   height: 60px;
   border-bottom: 1px solid var(--color-dark-300);
@@ -19,6 +19,6 @@
 
   & .rightSide {
     width: 100%;
-    @include flex(row, 0, clamp(0px, 3.75vw - 24px, 24px), center, flex-end);
+    @include flex(row, 0, clamp(22px, 3.75vw - 24px, 24px), center, flex-end);
   }
 }
