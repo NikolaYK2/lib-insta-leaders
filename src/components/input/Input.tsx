@@ -81,7 +81,7 @@ export const TextField = /* @__PURE__ */ forwardRef<HTMLInputElement, TextFieldP
 
     return (
       <div className={classNames.root}>
-        {label && <Label htmlFor={idToUse} label={label} required={required} labelColor={labelColor}> 
+        {label && <Label htmlFor={idToUse} label={label} required={required} labelColor={labelColor} /> }
         <div className={classNames.inputContainer}>
           {!!iconStart && <span className={classNames.iconStart}>{iconStart}</span>}
           <input
@@ -104,7 +104,6 @@ export const TextField = /* @__PURE__ */ forwardRef<HTMLInputElement, TextFieldP
         </div>
 
         {showError && <span className={classNames.errorMessage}>{errorMessage}</span>}
-        </Label> }
         
       </div>
     )
