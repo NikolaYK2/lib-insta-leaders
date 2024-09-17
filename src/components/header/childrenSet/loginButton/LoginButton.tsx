@@ -22,3 +22,5 @@ export const LoginButton = forwardRef<ElementRef<'button'>, LoginButtonProps>(
     )
   }
 )
+
+LoginButton.displayName = 'LoginButton'

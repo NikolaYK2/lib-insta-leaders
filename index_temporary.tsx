@@ -7,10 +7,11 @@ import {
   NotificationBell,
   SignupButton,
 } from './src'
+import { TABLET_BREAKPOINT } from './src/utils/constants'
 
 createRoot(document.getElementById('root')!).render(
   <div>
-    <Header mobileBreakpoint={768}>
+    <Header mobileBreakpoint={TABLET_BREAKPOINT}>
       <NotificationBell
         missedCount={3}
         mobileProps={{
@@ -26,6 +27,7 @@ createRoot(document.getElementById('root')!).render(
         onValueChange={value => {
           console.log(`LanguageSelector: ${value} selected`)
         }}
+        mobileBreakpoint={TABLET_BREAKPOINT}
       />
       <LoginButton
         onClick={() => {
@@ -43,6 +45,14 @@ createRoot(document.getElementById('root')!).render(
       <SignupButton
         onClick={() => {
           console.log('SignupButton: clicked')
+        }}
+        mobileProps={{
+          title: 'Sign up',
+          disabled: false,
+          icon: 'PersonAddOutline',
+          onClick: () => {
+            console.log(`SignupButton: click`)
+          },
         }}
       />
     </Header>
