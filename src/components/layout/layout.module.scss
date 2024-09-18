@@ -1,9 +1,13 @@
 .layout {
 }
 
-.sidebars {
+.aside {
+  width: 220px;
+  //background-color: #ffff001a;
   position: fixed;
-  inset: 60px auto 0 0;
+}
+
+.sidebar {
 }
 
 .main {
@@ -11,4 +15,36 @@
   height: 100%;
   position: fixed;
   padding: var(--header-height) 64px 0 var(--sidebars-width);
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+li {
+  &:last-child {
+    margin-top: 180px;
+  }
+}
+a {
+  display: flex;
+  gap: 12px;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--color-primary-100);
+  }
+  &:active {
+    color: var(--color-primary-500);
+  }
+
+  &:focus,
+  &:focus-visible {
+    border: 2px solid var(--color-primary-700);
+  }
+  &:disabled {
+    color: var(--color-dark-100);
+  }
 }
