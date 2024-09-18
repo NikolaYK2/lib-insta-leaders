@@ -28,13 +28,12 @@ export const Sidebar = ({
     <>
       <div aria-hidden={'true'} className={classNames.overlay} onClick={onClose}></div>
       <div className={classNames.box} {...rest}>
-        <div className={classNames.contentBox}>
+
           <div className={classNames.content}>
 
               {children}
 
           </div>
-        </div>
       </div>
     </>
   )
