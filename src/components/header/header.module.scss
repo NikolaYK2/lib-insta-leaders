@@ -2,12 +2,13 @@
 
 .container {
   position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  padding-inline: clamp(0px, 10.75vw - 60px, 60px);
+  //top: 0;
+  //right: 0;
+  //left: 0;
+  inset: 0 0 auto 0;
+  padding-inline: clamp(15px, 10.75vw - 60px, 60px);
 
-  height: 60px;
+  height: var(--header-height);
   border-bottom: 1px solid var(--color-dark-300);
 
   @include flex(row, 0, 0, center, space-between);
@@ -19,6 +20,6 @@
 
   & .rightSide {
     width: 100%;
-    @include flex(row, 0, clamp(0px, 3.75vw - 24px, 24px), center, flex-end);
+    @include flex(row, 0, clamp(22px, 3.75vw - 24px, 24px), center, flex-end);
   }
 }

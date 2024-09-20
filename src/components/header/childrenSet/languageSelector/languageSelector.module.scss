@@ -1,9 +1,26 @@
 .selector {
   width: 163px;
+
+  &.mobile {
+    width: fit-content;
+
+    background: none;
+    border: none;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background: none;
+    }
+  }
+}
+
+.icon {
+  margin-right: 2px;
 }
 
 .language {
-  margin-left: 13px;
+  margin-left: 11px;
 }
 
 .selectItem {
