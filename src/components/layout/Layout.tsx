@@ -39,7 +39,7 @@ export const Layout = forwardRef<ElementRef<'div'>, LayoutProps>(
               mobileProps={{
                 title: 'Log in',
                 disabled: false,
-                icon: 'LogInOutline',
+                // icon: 'LogInOutline',
                 onClick: () => {
                   console.log(`LoginButton: click`)
                 },
