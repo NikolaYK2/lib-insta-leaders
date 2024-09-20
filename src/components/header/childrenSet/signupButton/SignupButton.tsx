@@ -4,14 +4,7 @@ import s from './signupButton.module.scss'
 import { ButtonProps } from 'react-day-picker'
 import { IconId } from '../../../icons/DynamicIcon.tsx'
 
-export type SignupButtonProps = ButtonProps & {
-  mobileProps?: {
-    title: string
-    disabled: boolean
-    icon?: IconId
-    onClick?: () => void
-  }
-}
+export type SignupButtonProps = ButtonProps
 
 export const SignupButton = forwardRef<ElementRef<'button'>, SignupButtonProps>(
   ({ onClick }, forwardedRef) => {

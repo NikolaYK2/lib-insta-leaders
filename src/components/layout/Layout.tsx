@@ -17,51 +17,22 @@ export const Layout = forwardRef<ElementRef<'div'>, LayoutProps>(
       <div className={clsx(className, s.layout)} ref={forwardedRef} {...restProps}>
         {/* Header */}
         <Header>
-          <Header mobileBreakpoint={TABLET_BREAKPOINT}>
-            <NotificationBell
-              missedCount={3}
-              mobileProps={{
-                title: `${3} Notifications`,
-                disabled: false,
-                icon: 'OutlineBell',
-                onClick: () => {
-                  console.log(`NotificationBell: click`)
-                },
-              }}
-            />
-            <LanguageSelector
-              onValueChange={value => {
-                console.log(`LanguageSelector: ${value} selected`)
-              }}
-              mobileBreakpoint={TABLET_BREAKPOINT}
-            />
-            <LoginButton
-              onClick={() => {
-                console.log('LoginButton: clicked')
-              }}
-              mobileProps={{
-                title: 'Log in',
-                disabled: false,
-                icon: 'LogInOutline',
-                onClick: () => {
-                  console.log(`LoginButton: click`)
-                },
-              }}
-            />
-            <SignupButton
-              onClick={() => {
-                console.log('SignupButton: clicked')
-              }}
-              mobileProps={{
-                title: 'Sign up',
-                disabled: false,
-                icon: 'PersonAddOutline',
-                onClick: () => {
-                  console.log(`SignupButton: click`)
-                },
-              }}
-            />
-          </Header>
+          <NotificationBell missedCount={3} />
+          <LanguageSelector
+            onValueChange={value => {
+              console.log(`LanguageSelector: ${value} selected`)
+            }}
+          />
+          <LoginButton
+            onClick={() => {
+              console.log('LoginButton: clicked')
+            }}
+          />
+          <SignupButton
+            onClick={() => {
+              console.log('SignupButton: clicked')
+            }}
+          />
         </Header>
 
         {/*SideBar*/}
