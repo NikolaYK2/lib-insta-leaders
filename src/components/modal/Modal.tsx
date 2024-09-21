@@ -11,13 +11,13 @@ type ModalContentProps = {
 export const ModalContent = React.forwardRef<
   ElementRef<typeof DialogPrimitive.Content>,
   ModalContentProps
->(({ children, info = false, btnClose = true, ...props }, forwardedRef) => (
+>(({ children, info = false, btnClose = true, className, ...props }, forwardedRef) => (
   <DialogPrimitive.Portal>
     <DialogPrimitive.Overlay className={s.overlay} />
     <DialogPrimitive.Content
       {...props}
       ref={forwardedRef}
-      className={clsx(s.content, info && s.info)}
+      className={clsx(s.content, info && s.info, className)}
     >
       {children}
       {btnClose && (
