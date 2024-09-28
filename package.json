@@ -10,7 +10,8 @@
     "lint": "eslint && stylelint --fix src/{,*/}*.{scss,css} --allow-empty-input",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "patch": "pnpm version patch && pnpm publish"
   },
   "peerDependencies": {
     "react": "18.3.1",
