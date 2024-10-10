@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { ReactNode, ComponentProps, forwardRef, useId } from 'react'
+import { ReactNode, ComponentProps, forwardRef, useId, useState } from 'react'
 import s from './input.module.scss'
 import { KeyboardEvent } from 'react'
 import { Label, LabelProps } from '../label'
@@ -41,6 +41,7 @@ export const TextField = /* @__PURE__ */ forwardRef<HTMLInputElement, TextFieldP
     ref
   ) => {
     const showError = !!errorMessage && errorMessage.length > 0
+    const [showPassword, setShowPassword] = useState(false);
     const generatedId = useId()
     const idToUse = id ?? generatedId
 
@@ -51,8 +52,16 @@ export const TextField = /* @__PURE__ */ forwardRef<HTMLInputElement, TextFieldP
       type = "search"
     }
     if (password) {
-      iconEnd = <DynamicIcon iconId={'EyeOutline'} width={20} color={"var(--color-light-100)"}/>
-      type = "password"
+      iconEnd = (
+        <DynamicIcon
+        iconId={showPassword ? 'EyeOffOutline' : 'EyeOutline'}
+          onClick={() => setShowPassword(!showPassword)}
+          style={{ cursor: 'pointer' }}
+          width={20} 
+          color={"var(--color-light-100)"}
+        />
+      );
+      type = showPassword ? 'text' : 'password';
     }
 
     const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
