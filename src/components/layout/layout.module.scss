@@ -28,23 +28,23 @@ li {
     margin-top: 180px;
   }
 }
-a {
-  display: flex;
-  gap: 12px;
-  cursor: pointer;
-
-  &:hover {
-    color: var(--color-primary-100);
-  }
-  &:active {
-    color: var(--color-primary-500);
-  }
-
-  &:focus,
-  &:focus-visible {
-    border: 2px solid var(--color-primary-700);
-  }
-  &:disabled {
-    color: var(--color-dark-100);
-  }
-}
+//a {
+//  display: flex;
+//  gap: 12px;
+//  cursor: pointer;
+//
+//  &:hover {
+//    color: var(--color-primary-100);
+//  }
+//  &:active {
+//    color: var(--color-primary-500);
+//  }
+//
+//  &:focus,
+//  &:focus-visible {
+//    border: 2px solid var(--color-primary-700);
+//  }
+//  &:disabled {
+//    color: var(--color-dark-100);
+//  }
+//}

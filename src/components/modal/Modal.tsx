@@ -1,4 +1,10 @@
-import React, { ComponentPropsWithoutRef, CSSProperties, ElementRef, forwardRef } from 'react'
+import React, {
+  ComponentProps,
+  ComponentPropsWithoutRef,
+  CSSProperties,
+  ElementRef,
+  forwardRef,
+} from 'react'
 import * as DialogPrimitive from '@radix-ui/react-dialog'
 import s from './Modal.module.scss'
 import clsx from 'clsx'
@@ -11,20 +17,18 @@ type ModalContentProps = {
 export const ModalContent = React.forwardRef<
   ElementRef<typeof DialogPrimitive.Content>,
   ModalContentProps
->(({ children, info = false, btnClose = true, ...props }, forwardedRef) => (
+>(({ children, info = false, btnClose = true, className, ...props }, forwardedRef) => (
   <DialogPrimitive.Portal>
     <DialogPrimitive.Overlay className={s.overlay} />
     <DialogPrimitive.Content
       {...props}
       ref={forwardedRef}
-      className={clsx(s.content, info && s.info)}
+      className={clsx(s.content, info && s.info, className)}
     >
       {children}
       {btnClose && (
-        <DialogPrimitive.Close>
-          <button className={clsx(s.btn, info && s.btnInfo)}>
-            <DynamicIcon iconId={'CloseOutline'} width={24} />
-          </button>
+        <DialogPrimitive.Close className={clsx(s.btn, info && s.btnInfo)}>
+          <DynamicIcon iconId={'CloseOutline'} width={24} />
         </DialogPrimitive.Close>
       )}
     </DialogPrimitive.Content>
@@ -52,20 +56,27 @@ export const ModalClose = forwardRef<
   ElementRef<typeof DialogPrimitive.Close>,
   ComponentPropsWithoutRef<typeof DialogPrimitive.Close>
 >(({ ...props }, forwardRef) => {
-  return (
-    <DialogPrimitive.Close ref={forwardRef} {...props} asChild>
-      <button className={s.btn}>
-        <DynamicIcon iconId={'CloseOutline'} width={24} />
-      </button>
-    </DialogPrimitive.Close>
-  )
+  return <DialogPrimitive.Close ref={forwardRef} {...props} />
 })
 
 export const ModalDescription = forwardRef<
   ElementRef<typeof DialogPrimitive.Description>,
   ComponentPropsWithoutRef<typeof DialogPrimitive.Description>
->(({ ...props }, forwardRef) => {
-  return <DialogPrimitive.Description {...props} ref={forwardRef} className={s.description} />
+>(({ className, ...props }, forwardRef) => {
+  return (
+    <DialogPrimitive.Description
+      {...props}
+      ref={forwardRef}
+      className={clsx(s.description, className)}
+    />
+  )
 })
+
+export const ModalContentItem = forwardRef<HTMLDivElement, ComponentProps<'div'>>(
+  ({ className, ...props }, forwardRef) => {
+    return <div ref={forwardRef} {...props} className={clsx(s.modalContentItem, className)} />
+  }
+)
+
 export const Modal = DialogPrimitive.Root
 export const ModalTrigger = DialogPrimitive.Trigger
