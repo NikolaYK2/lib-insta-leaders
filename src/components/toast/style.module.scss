@@ -1,0 +1,35 @@
+.success,
+.error,
+.alertError {
+  width: 100%;
+  text-align: center;
+  padding: 10px 24px;
+  border: 1px solid;
+  border-radius: 2px;
+}
+
+.success {
+  background-color: var(--color-success-900);
+  border-color: var(--color-success-500);
+}
+
+.error,
+.alertError {
+  background-color: var(--color-danger-900);
+  border-color: var(--color-danger-500);
+
+  span {
+    font-weight: var(--font-weight-bold);
+  }
+}
+
+.alertError,
+.success {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  svg {
+    cursor: pointer;
+  }
+}
