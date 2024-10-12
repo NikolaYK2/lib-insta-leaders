@@ -1,7 +1,7 @@
 {
   "name": "@nikolajk2/lib-insta-leaders",
   "private": false,
-  "version": "0.0.49",
+  "version": "0.0.50",
   "type": "module",
   "scripts": {
     "dev": "vite",
