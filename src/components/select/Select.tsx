@@ -12,16 +12,20 @@ type Props = SelectProps & {
   className?: string
   defaultValue?: string
   style?: CSSProperties
+  placeholder?: string
 }
 
 export const Selector = forwardRef<ElementRef<typeof Select.Root>, Props>(
-  ({ children, className, defaultValue = '10', triggerIcon, style, ...props }: Props, ref) => {
+  (
+    { children, className, defaultValue = '10', triggerIcon, style, placeholder, ...props }: Props,
+    ref
+  ) => {
     return (
       <Select.Root defaultValue={defaultValue} {...props}>
         <Select.Trigger className={`${s.trigger} ${className}`} ref={ref} style={style}>
           <div className={s.valueBlock}>
             {triggerIcon && <Select.Icon className={s.triggerIcon}>{triggerIcon}</Select.Icon>}
-            <Select.Value />
+            <Select.Value placeholder={placeholder} />
           </div>
           <Select.Icon className={s.selectIcon}>
             <DynamicIcon iconId={'ArrowIosDownOutline'} className={s.icon} />
