@@ -4,6 +4,7 @@ button {
 }
 
 .label {
+  display: flex;
   color: var(--color-light-900);
   text-transform: capitalize;
 }
