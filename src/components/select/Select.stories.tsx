@@ -107,3 +107,31 @@ export const SelectIcons: Story = {
     )
   },
 }
+
+export const SelectLabel: Story = {
+  render: () => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [state, setState] = useState<keyof typeof icons>('FlagRussia')
+    return (
+      <Selector
+        defaultValue={state}
+        style={selectIcon}
+        onValueChange={value => setState(value as keyof typeof icons)}
+        label={'language'}
+      >
+        <SelectItem style={{ width: '161px' }} value={'FlagRussia'}>
+          <div style={{ display: 'flex' }}>
+            <DynamicIcon iconId={'FlagRussia'} width={20} style={{ marginRight: '12px' }} />
+            <Typography variant={TypographyVariant.regular_text_16}>Russian</Typography>
+          </div>
+        </SelectItem>
+        <SelectItem value={'FlagUnitedKingdom'} style={{ display: 'flex' }}>
+          <div style={{ display: 'flex' }}>
+            <DynamicIcon iconId={'FlagUnitedKingdom'} width={20} style={{ marginRight: '12px' }} />
+            <Typography variant={TypographyVariant.regular_text_16}>English</Typography>
+          </div>
+        </SelectItem>
+      </Selector>
+    )
+  },
+}

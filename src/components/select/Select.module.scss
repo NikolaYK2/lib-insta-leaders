@@ -3,6 +3,11 @@ button {
   all: unset;
 }
 
+.label {
+  color: var(--color-light-900);
+  text-transform: capitalize;
+}
+
 .trigger {
   cursor: pointer;
 
