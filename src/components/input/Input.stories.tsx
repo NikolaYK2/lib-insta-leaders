@@ -2,9 +2,7 @@
 import type { Meta } from '@storybook/react'
 
 import { TextField } from './Input' // More on how to set up stories at:
-import { useState } from 'react'
-import React from 'react'
-
+import React, { useState } from 'react'
 //
 export default {
   component: TextField,
@@ -21,8 +19,19 @@ export const Primary = {
   },
 }
 
+export const Color = {
+  args: {
+    disabled: false,
+    error: false,
+    label: 'Color',
+    placeholder: 'Placeholder bg color input',
+    type: 'text',
+    inputColor: 'green',
+  },
+}
+
 export const Invalid = {
-  render: args => {
+  render: () => {
     return (
       <TextField errorMessage={'Error!'} label={'some label'} value={'some value'} type={'text'} />
     )
@@ -35,7 +44,7 @@ export const Search = {
     placeholder: 'Search...',
     search: true,
   },
-  render: args => {
+  render: () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [text, setText] = useState('')
 
