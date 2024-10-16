@@ -3,6 +3,11 @@ button {
   all: unset;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
 .label {
   display: flex;
   color: var(--color-light-900);
@@ -149,4 +154,9 @@ button {
   color: var(--violet-11);
 
   background-color: white;
+}
+
+.baba {
+  width: 100% !important;
+  max-width: 300px !important;
 }
