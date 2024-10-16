@@ -35,14 +35,14 @@ export const Selector = forwardRef<ElementRef<typeof Select.Root>, Props>(
     ref
   ) => {
     return (
-      <>
+      <div>
         {label && (
           <Typography
             className={clsx(s.label)}
             style={{ color: labelColor }}
             variant={TypographyVariant.regular_text_14}
           >
-            {label}
+            {label[0]!.toUpperCase() + label.slice(1)}
           </Typography>
         )}
         <Select.Root defaultValue={defaultValue} {...props}>
@@ -62,7 +62,7 @@ export const Selector = forwardRef<ElementRef<typeof Select.Root>, Props>(
             </Select.Content>
           </Select.Portal>
         </Select.Root>
-      </>
+      </div>
     )
   }
 )

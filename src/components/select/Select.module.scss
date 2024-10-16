@@ -6,7 +6,6 @@ button {
 .label {
   display: flex;
   color: var(--color-light-900);
-  text-transform: capitalize;
 }
 
 .trigger {
@@ -111,7 +110,6 @@ button {
 }
 
 .viewport {
-  //overflow-y: auto; /* Добавьте вертикальную прокрутку */
   max-height: 150px; /* Установите максимальную высоту для прокрутки */
 }
 
