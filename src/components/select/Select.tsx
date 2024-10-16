@@ -35,7 +35,7 @@ export const Selector = forwardRef<ElementRef<typeof Select.Root>, Props>(
     ref
   ) => {
     return (
-      <div className={s.container}>
+      <div className={clsx(s.container, className)}>
         {label && (
           <Typography
             className={clsx(s.label)}
