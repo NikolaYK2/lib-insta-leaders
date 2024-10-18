@@ -39,11 +39,11 @@ export const Invalid = {
 }
 
 export const Search = {
-  args: {
-    label: 'Some label',
-    placeholder: 'Search...',
-    search: true,
-  },
+  // args: {//- Сашулик, когда исп. render то пропсы args не будут работать
+  // placeholder: 'Search...',
+  // label: 'Some label',
+  // search: true,
+  // },
   render: () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [text, setText] = useState('')
@@ -54,6 +54,8 @@ export const Search = {
         onClearClick={() => setText('')}
         search
         value={text}
+        label={'Some label'}
+        placeholder={'Search...'}
       />
     )
   },

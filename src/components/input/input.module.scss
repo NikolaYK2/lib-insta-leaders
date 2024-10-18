@@ -74,6 +74,10 @@ input:-webkit-autofill {
   border-radius: 2px;
   outline: none;
 
+  &::placeholder {
+    color: var(--color-dark-100);
+  }
+
   &:disabled {
     color: var(--color-dark-100);
   }
