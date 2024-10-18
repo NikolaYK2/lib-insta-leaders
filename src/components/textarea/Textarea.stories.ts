@@ -7,8 +7,8 @@ const meta = {
     disabled: {
       control: { type: 'boolean' },
     },
-    onValueChange: {
-      action: 'on Value Change',
+    onChange: {
+      action: 'on Change',
     },
   },
   component: Textarea,
