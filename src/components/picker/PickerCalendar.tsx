@@ -50,9 +50,7 @@ export const PickerCalendar = ({
           />
         </Button>
       </PopoverTrigger>
-      <Typography variant={TypographyVariant.small_text} className={clsx(s.errorMessage)}>
-        <small>{error}</small>
-      </Typography>
+      <div className={clsx(s.errorMessage)}>{error}</div>
       <PopoverContent className={s.popoverContent} sideOffset={sideOffsetContent}>
         <Calendar
           onSelect={onSelect}
