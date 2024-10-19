@@ -36,11 +36,21 @@ export const InputDataPicker = ({
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value)
+    let value = e.target.value
+    // Разрешаем только цифры и точки
+    value = value.replace(/[^0-9]/g, '')
+
+    // Автоматически добавляем точки в формат MM.dd.yyyy
+    if (value.length >= 2 && value.length <= 4) {
+      value = value.slice(0, 2) + '.' + value.slice(2)
+    } else if (value.length > 4) {
+      value = value.slice(0, 2) + '.' + value.slice(2, 4) + '.' + value.slice(4, 8)
+    }
+    setInputValue(value)
 
     const parsedDate = parse(e.target.value, 'MM.dd.yyyy', new Date())
 
-    if (isValid(parsedDate)) {
+    if (isValid(parsedDate) && value.length === 10) {
       onSelect(parsedDate)
       setMonth(parsedDate)
     } else {
@@ -54,6 +64,7 @@ export const InputDataPicker = ({
         label={labelInput}
         className={clsx(s.input, error && s.error)}
         type={'text'}
+        inputMode={'numeric'}
         value={inputValue}
         placeholder={'MM.dd.yyyy'}
         onChange={handleInputChange}
