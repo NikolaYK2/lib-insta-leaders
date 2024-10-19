@@ -36,9 +36,14 @@ export const InputDataPicker = ({
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let value = e.target.value
+    let value = e.currentTarget.value
     // Разрешаем только цифры и точки
     value = value.replace(/[^0-9]/g, '')
+
+    // Ограничиваем ввод до 10 символов (формат MM.dd.yyyy)
+    if (value.length > 10) {
+      value = value.slice(0, 10)
+    }
 
     // Автоматически добавляем точки в формат MM.dd.yyyy
     if (value.length >= 2 && value.length <= 4) {
@@ -46,7 +51,10 @@ export const InputDataPicker = ({
     } else if (value.length > 4) {
       value = value.slice(0, 2) + '.' + value.slice(2, 4) + '.' + value.slice(4, 8)
     }
-    setInputValue(value)
+    // Обновляем состояние значения инпута, только если новое значение отличается от текущего
+    if (value.length <= 10) {
+      setInputValue(prevValue => (prevValue !== value ? value : prevValue))
+    }
 
     const parsedDate = parse(e.target.value, 'MM.dd.yyyy', new Date())
 
@@ -57,6 +65,7 @@ export const InputDataPicker = ({
       onSelect(undefined)
     }
   }
+
   return (
     <div className={s.container}>
       <TextField
@@ -66,6 +75,8 @@ export const InputDataPicker = ({
         type={'text'}
         inputMode={'numeric'}
         value={inputValue}
+        autoComplete="off"
+        name={'input-picker'}
         placeholder={'MM.dd.yyyy'}
         onChange={handleInputChange}
       />
