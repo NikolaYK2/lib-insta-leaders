@@ -17,7 +17,7 @@ export const Toast = ({ callback, children, variant, className, maxWidth = '325p
   return (
     <div className={`${s[variant]} ${className}`} style={{ maxWidth }}>
       <Typography variant={TypographyVariant.regular_text_16}>
-        <span>Error! </span> {children}
+        {variant === 'alertError' && <span>Error! </span>} {children}
       </Typography>
       {variant !== 'error' && (
         <DynamicIcon iconId={'Close'} width={24} height={24} onClick={onClose} />
