@@ -31,6 +31,27 @@ export const InputPicker: Story = {
     },
   },
 }
+
+export const InputPickerDefaultValue: Story = {
+  render: () => {
+    const { selectedDate, setSelectedDate } = useSelectedCalendar()
+    return (
+      <InputDataPicker
+        selected={selectedDate}
+        onSelect={setSelectedDate}
+        labelInput={'Date of birth'}
+        defaultValue={'10.03.1991'}
+      />
+    )
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'что бы управлять компонентой можно использовать хук useSelectedCalendar()',
+      },
+    },
+  },
+}
 export const InputPickerDisabled: Story = {
   render: () => {
     const { selectedDate, setSelectedDate } = useSelectedCalendar()
