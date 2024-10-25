@@ -8,29 +8,24 @@ import React, {
 import * as DialogPrimitive from '@radix-ui/react-dialog'
 import s from './Modal.module.scss'
 import clsx from 'clsx'
-import DynamicIcon from '../icons/DynamicIcon.tsx'
 
 type ModalContentProps = {
-  info?: boolean
-  btnClose?: boolean
+  // info?: boolean
+  // btnClose?: boolean
 } & ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
 export const ModalContent = React.forwardRef<
   ElementRef<typeof DialogPrimitive.Content>,
   ModalContentProps
->(({ children, info = false, btnClose = true, className, ...props }, forwardedRef) => (
+>(({ children, className, ...props }, forwardedRef) => (
   <DialogPrimitive.Portal>
     <DialogPrimitive.Overlay className={s.overlay} />
-    <DialogPrimitive.Content
-      {...props}
-      ref={forwardedRef}
-      className={clsx(s.content, info && s.info, className)}
-    >
+    <DialogPrimitive.Content {...props} ref={forwardedRef} className={clsx(s.content, className)}>
       {children}
-      {btnClose && (
-        <DialogPrimitive.Close className={clsx(s.btn, info && s.btnInfo)}>
-          <DynamicIcon iconId={'CloseOutline'} width={24} />
-        </DialogPrimitive.Close>
-      )}
+      {/*{btnClose && (*/}
+      {/*  <DialogPrimitive.Close className={clsx(s.btn, info && s.btnInfo)}>*/}
+      {/*    <DynamicIcon iconId={'CloseOutline'} width={24} />*/}
+      {/*  </DialogPrimitive.Close>*/}
+      {/*)}*/}
     </DialogPrimitive.Content>
   </DialogPrimitive.Portal>
 ))
