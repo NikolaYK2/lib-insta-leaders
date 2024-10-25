@@ -4,7 +4,7 @@
 }
 
 .list {
-  overflow-x: auto;
+  overflow: auto hidden;
   display: flex;
   flex-shrink: 0;
   border-bottom: 2px solid var(--color-dark-100);
