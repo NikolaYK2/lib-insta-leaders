@@ -71,11 +71,12 @@ export type TabContentProps = {
   children: ReactNode
   /** A unique value that associates the trigger with a content. */
   value: string
+  className?: string
 }
 
-export const TabContent: FC<TabContentProps> = ({ children, value }) => {
+export const TabContent: FC<TabContentProps> = ({ children, value, className = '' }) => {
   return (
-    <TabsRadixUI.Content className={s.content} value={value}>
+    <TabsRadixUI.Content className={clsx(s.content, className)} value={value}>
       {children}
     </TabsRadixUI.Content>
   )
