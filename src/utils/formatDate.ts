@@ -13,5 +13,11 @@ type Params = {
 }
 export const formatDate = ({ date, dateFormat }: Params): string => {
   const parsedDate = typeof date === 'string' ? new Date(date) : date
+
+  // Проверка на валидность даты
+  if (isNaN(parsedDate.getTime())) {
+    return '' // Возвращаем пустую строку, если дата некорректна
+  }
+
   return format(parsedDate, dateFormat)
 }
