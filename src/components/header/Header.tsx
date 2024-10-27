@@ -1,6 +1,5 @@
 import { ReactNode } from 'react'
 import s from './header.module.scss'
-import { Typography, TypographyVariant } from '../typography'
 import { clsx } from 'clsx'
 
 export type HeaderProps = {
@@ -16,19 +15,19 @@ export const Header = ({ variant = 'app', children, className = '' }: HeaderProp
 
   return (
     <div className={clsx(s.container, className)}>
-      <div className={s.leftSide}>
-        <Typography asChild variant={TypographyVariant.large}>
-          <span>{title}</span>
-        </Typography>
-        <>
-          <Typography asChild variant={TypographyVariant.small_text}>
-            <span>{subTitleRegular}</span>
-          </Typography>
-          <Typography asChild variant={TypographyVariant.semibold_small_text}>
-            <span>{subTitleSemiBold}</span>
-          </Typography>
-        </>
-      </div>
+      {/*<div className={s.leftSide}>*/}
+      {/*  <Typography asChild variant={TypographyVariant.large}>*/}
+      {/*    <span>{title}</span>*/}
+      {/*  </Typography>*/}
+      {/*  <>*/}
+      {/*    <Typography asChild variant={TypographyVariant.small_text}>*/}
+      {/*      <span>{subTitleRegular}</span>*/}
+      {/*    </Typography>*/}
+      {/*    <Typography asChild variant={TypographyVariant.semibold_small_text}>*/}
+      {/*      <span>{subTitleSemiBold}</span>*/}
+      {/*    </Typography>*/}
+      {/*  </>*/}
+      {/*</div>*/}
       <div className={s.rightSide}>{children}</div>
     </div>
   )
