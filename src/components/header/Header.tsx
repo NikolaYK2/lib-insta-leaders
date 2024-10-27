@@ -1,19 +1,21 @@
 import { ReactNode } from 'react'
 import s from './header.module.scss'
 import { Typography, TypographyVariant } from '../typography'
+import { clsx } from 'clsx'
 
 export type HeaderProps = {
   variant?: 'app' | 'admin'
   children?: ReactNode
+  className?: string
 }
 
-export const Header = ({ variant = 'app', children }: HeaderProps) => {
+export const Header = ({ variant = 'app', children, className = '' }: HeaderProps) => {
   const title = 'Inctagram'
   const subTitleRegular = variant === 'admin' && 'Super'
   const subTitleSemiBold = variant === 'admin' && 'Admin'
 
   return (
-    <div className={s.container}>
+    <div className={clsx(s.container, className)}>
       <div className={s.leftSide}>
         <Typography asChild={true} variant={TypographyVariant.large}>
           <span>{title}</span>
