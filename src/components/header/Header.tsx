@@ -17,14 +17,14 @@ export const Header = ({ variant = 'app', children, className = '' }: HeaderProp
   return (
     <div className={clsx(s.container, className)}>
       <div className={s.leftSide}>
-        <Typography asChild={true} variant={TypographyVariant.large}>
+        <Typography asChild variant={TypographyVariant.large}>
           <span>{title}</span>
         </Typography>
         <>
-          <Typography asChild={true} variant={TypographyVariant.small_text}>
+          <Typography asChild variant={TypographyVariant.small_text}>
             <span>{subTitleRegular}</span>
           </Typography>
-          <Typography asChild={true} variant={TypographyVariant.semibold_small_text}>
+          <Typography asChild variant={TypographyVariant.semibold_small_text}>
             <span>{subTitleSemiBold}</span>
           </Typography>
         </>
