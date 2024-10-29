@@ -10,7 +10,7 @@ import s from './Modal.module.scss'
 import clsx from 'clsx'
 import { DialogProps } from '@radix-ui/react-dialog'
 
-export type Modal = DialogProps //для Modal root
+export type ModalProps = DialogProps //для Modal root
 type ModalContentProps = ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
 export const ModalContent = React.forwardRef<
   ElementRef<typeof DialogPrimitive.Content>,
