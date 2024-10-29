@@ -1,1 +1,1 @@
-export { VisibilityToggle } from './VisibilityToggle'
+export * from './VisibilityToggle'
