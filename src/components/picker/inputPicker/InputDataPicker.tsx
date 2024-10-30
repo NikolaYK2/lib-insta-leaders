@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { format, isValid, parse } from 'date-fns'
 import { PickerCalendar, PickerCalendarProps } from '../PickerCalendar'
 import clsx from 'clsx'
@@ -8,6 +8,7 @@ import { DataType } from '../lib/hooks/useSelectedCalendar.ts'
 
 type InputDataPickerProps = PickerCalendarProps & {
   labelInput: string
+  defaultValue?: string
 }
 export const InputDataPicker = ({
   error,
@@ -16,10 +17,11 @@ export const InputDataPicker = ({
   selected,
   onSelect,
   labelInput = '',
+  defaultValue = '',
 }: InputDataPickerProps) => {
   const [month, setMonth] = useState(new Date())
 
-  const [inputValue, setInputValue] = useState('')
+  const [inputValue, setInputValue] = useState(defaultValue)
 
   const [isActive, setIsActive] = useState(false)
 
@@ -65,6 +67,13 @@ export const InputDataPicker = ({
       onSelect(undefined)
     }
   }
+
+  useEffect(() => {
+    if (defaultValue) {
+      setInputValue(defaultValue)
+      setMonth(new Date(defaultValue))
+    }
+  }, [defaultValue])
 
   return (
     <div className={s.container}>

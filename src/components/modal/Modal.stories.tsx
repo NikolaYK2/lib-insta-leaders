@@ -36,7 +36,7 @@ export const CLose: Story = {
   name: 'Modal close',
   render: () => (
     <Modal>
-      <ModalClose style={{ left: 0 }}>
+      <ModalClose style={{ left: 0 }} asChild>
         <Button variant={'text'}>
           <DynamicIcon iconId={'CloseOutline'} width={24} />
         </Button>
@@ -73,44 +73,14 @@ export const view: Story = {
         <Button>Add a Profile Photo</Button>
       </ModalTrigger>
       <ModalContent style={{ maxWidth: '492px', width: '100%' }}>
-        <ModalTitle>Add a Profile Photo</ModalTitle>
+        <ModalTitle style={{ display: 'flex', justifyContent: 'space-between' }}>
+          Add a Profile Photo <DynamicIcon iconId={'Close'} width={20} height={20} />
+        </ModalTitle>
         <ModalContentItem>
           <ModalDescription>my super puper image</ModalDescription>
           <ModalClose asChild>
             <Button style={{ margin: '0 auto', display: 'flex' }}>Select from Computer</Button>
           </ModalClose>
-        </ModalContentItem>
-      </ModalContent>
-    </Modal>
-  ),
-}
-
-export const viewInfo: Story = {
-  name: 'Modal view with prop info',
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'включение пропса "info" добавит padding. Обратите внимание на расположение кнопки "close"',
-      },
-    },
-  },
-
-  render: () => (
-    <Modal>
-      <ModalTrigger asChild>
-        <Button>Delete Following</Button>
-      </ModalTrigger>
-      <ModalContent style={{ maxWidth: '492px', width: '100%' }} info>
-        <ModalTitle>Delete Following</ModalTitle>
-        <ModalContentItem>
-          <ModalDescription>
-            Do you really want to delete a Following “URLProfiele”?
-          </ModalDescription>
-          <div style={{ display: 'flex', justifyContent: 'end', width: '100%' }}>
-            <Button style={{ margin: '0 24px 0 0' }}>Yes</Button>
-            <Button>No</Button>
-          </div>
         </ModalContentItem>
       </ModalContent>
     </Modal>
@@ -173,7 +143,7 @@ export const ModalInfo: Story = {
             </div>
           ))}
         </ModalTrigger>
-        <ModalContent style={{ maxWidth: '1000px' }} info>
+        <ModalContent style={{ maxWidth: '1000px' }}>
           <div style={{ display: 'flex' }}>
             <div
               style={{
@@ -191,6 +161,14 @@ export const ModalInfo: Story = {
               <ModalDescription style={{ background: 'grey' }}>{user.description}</ModalDescription>
             </div>
           </div>
+          <ModalClose asChild>
+            <DynamicIcon
+              style={{ position: 'absolute', top: -20, right: -20 }}
+              iconId={'Close'}
+              width={20}
+              height={20}
+            />
+          </ModalClose>
         </ModalContent>
       </Modal>
     )
@@ -211,7 +189,7 @@ export const ModalImage: Story = {
       <ModalTrigger asChild>
         <Button>Cropping</Button>
       </ModalTrigger>
-      <ModalContent style={{ maxWidth: '492px', width: '100%' }} btnClose={false}>
+      <ModalContent style={{ maxWidth: '492px', width: '100%' }}>
         <ModalTitle asChild>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <Button variant={'text'} style={{ padding: 0 }}>

@@ -4,6 +4,7 @@
 }
 
 .list {
+  overflow: auto hidden;
   display: flex;
   flex-shrink: 0;
   border-bottom: 2px solid var(--color-dark-100);
@@ -32,14 +33,14 @@
     &.fullWidth {
       flex-grow: 1;
     }
-    
+
     &:focus,
     &:focus-visible {
-      border: 2px solid var(--color-primary-700)
+      border: 2px solid var(--color-primary-700);
     }
 
     &:hover {
-      background-color: rgba(35,78,153, 0.15);
+      background-color: rgb(35 78 153 / 15%);
     }
 
     &[data-state='active'] {
@@ -60,7 +61,7 @@
     }
 
     &:active {
-      background-color: rgba(115,165,255, 0.15);
+      background-color: rgb(115 165 255 / 15%);
     }
 
     &[data-disabled] {
@@ -69,7 +70,6 @@
       background-color: inherit;
     }
   }
-
 }
 
 .content {
