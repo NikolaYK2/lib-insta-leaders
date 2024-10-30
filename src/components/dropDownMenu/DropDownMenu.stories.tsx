@@ -18,6 +18,7 @@ export const Default: Story = {
   args: {
     trigger: { icon: 'MoreHorizontal' },
     isArrow: true,
+    separator: true,
     items: [
       { title: 'Learn', disabled: false, icon: 'PlayCircleOutline', onClick: () => alert('click') },
       { title: 'Edit', disabled: false, icon: 'Edit2Outline', onClick: () => alert('click') },

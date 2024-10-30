@@ -5,6 +5,7 @@ import { DynamicMenuItem } from './dynamicMenuItem'
 import { IconId } from '../icons/DynamicIcon.tsx'
 import { DynamicIcon } from '../icons'
 import { Typography, TypographyVariant } from '../typography'
+import {clsx} from "clsx";
 
 interface Trigger {
   img?: string
@@ -41,10 +42,12 @@ export type DropDownMenuProps = {
   trigger: Trigger
   profile?: Profile
   items: ItemSetting[]
+  className?: string
+  separator?: boolean
 }
 
 export const DropDownMenu = (props: DropDownMenuProps) => {
-  const { profile, trigger, isArrow, items } = props
+  const { profile, trigger, isArrow, items,separator= false, className } = props
   const itemList = items.map((el, i) => {
     return (
       <Fragment key={i}>
@@ -58,7 +61,7 @@ export const DropDownMenu = (props: DropDownMenuProps) => {
           />
         </DropdownMenu.Item>
 
-        {i < items.length - 1 && <DropdownMenu.Separator className={s.Separator} />}
+        {i < items.length - 1 && separator && <DropdownMenu.Separator className={s.Separator} />}
       </Fragment>
     )
   })
@@ -74,7 +77,7 @@ export const DropDownMenu = (props: DropDownMenuProps) => {
 
       <DropdownMenu.Portal>
         <DropdownMenu.Content
-          className={s.Content}
+          className={clsx(s.Content, className)}
           sideOffset={10}
           align={'end'}
           alignOffset={-6}
@@ -96,7 +99,9 @@ export const DropDownMenu = (props: DropDownMenuProps) => {
                   </div>
                 </a>
               </DropdownMenu.Item>
-              <DropdownMenu.Separator className={s.Separator} />
+              {
+                  separator &&  <DropdownMenu.Separator className={s.Separator} />
+              }
               {itemList}
             </>
           )}
