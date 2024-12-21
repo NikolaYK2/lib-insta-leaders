@@ -1,9 +1,8 @@
 import clsx from 'clsx'
-import { ReactNode, ComponentProps, forwardRef, useId, useState, CSSProperties } from 'react'
+import {ComponentProps, CSSProperties, forwardRef, KeyboardEvent, ReactNode, useId, useState} from 'react'
 import s from './input.module.scss'
-import { KeyboardEvent } from 'react'
-import { Label, LabelProps } from '../label'
-import { DynamicIcon } from '../icons'
+import {Label, LabelProps} from '../label'
+import {DynamicIcon} from '../icons'
 
 export type TextFieldProps = {
   errorMessage?: string
@@ -20,7 +19,7 @@ export type TextFieldProps = {
   inputColor?: CSSProperties['backgroundColor']
 } & ComponentProps<'input'>
 
-export const TextField = /* @__PURE__ */ forwardRef<HTMLInputElement, TextFieldProps>(
+export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
   (
     {
       className,
@@ -45,17 +44,16 @@ export const TextField = /* @__PURE__ */ forwardRef<HTMLInputElement, TextFieldP
     const [showPassword, setShowPassword] = useState(false)
     const generatedId = useId()
     const idToUse = id ?? generatedId
-
     if (search) {
-      iconStart = <DynamicIcon iconId={'Search'} width={20} className={s.searchIcon} />
+      iconStart = <DynamicIcon iconId={'Search'} width={20} className={s.searchIcon}/>
       type = 'search'
     }
     if (password) {
       iconEnd = (
         <DynamicIcon
-          iconId={showPassword ? 'EyeOffOutline' : 'EyeOutline'}
+          iconId={showPassword ? 'EyeOutline' : 'EyeOffOutline'}
           onClick={() => setShowPassword(!showPassword)}
-          style={{ cursor: 'pointer' }}
+          style={{cursor: 'pointer'}}
           width={20}
           color={'var(--color-light-100)'}
         />
@@ -80,7 +78,6 @@ export const TextField = /* @__PURE__ */ forwardRef<HTMLInputElement, TextFieldP
       errorMessage: s.errorMessage,
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
     const isShowClearButton = onClearClick && rest?.value?.length! > 0
 
     const dataIconStart = iconStart ? 'start' : ''
@@ -90,7 +87,7 @@ export const TextField = /* @__PURE__ */ forwardRef<HTMLInputElement, TextFieldP
     return (
       <div className={classNames.root}>
         {label && (
-          <Label htmlFor={idToUse} label={label} required={required} labelColor={labelColor} />
+          <Label htmlFor={idToUse} label={label} required={required} labelColor={labelColor}/>
         )}
         <div className={classNames.inputContainer}>
           {!!iconStart && <span className={classNames.iconStart}>{iconStart}</span>}
@@ -103,12 +100,12 @@ export const TextField = /* @__PURE__ */ forwardRef<HTMLInputElement, TextFieldP
             ref={ref}
             required={required}
             type={type}
-            style={{ backgroundColor: rest.inputColor }}
+            style={{backgroundColor: rest.inputColor}}
             {...rest}
           />
           {isShowClearButton && (
             <button className={classNames.clearButton} onClick={onClearClick} type={'button'}>
-              {<DynamicIcon iconId={'Close'} color={'var(--color-light-100)'} />}
+              {<DynamicIcon iconId={'Close'} color={'var(--color-light-100)'}/>}
             </button>
           )}
           {!!iconEnd && <span className={classNames.iconEnd}>{iconEnd}</span>}
