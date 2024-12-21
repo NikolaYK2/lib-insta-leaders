@@ -1,7 +1,7 @@
-import { ComponentPropsWithoutRef, forwardRef } from 'react'
+import {ComponentPropsWithoutRef, forwardRef} from 'react'
 
 import * as RadioGroup from '@radix-ui/react-radio-group'
-import { RadioGroupProps } from '@radix-ui/react-radio-group'
+import {RadioGroupProps} from '@radix-ui/react-radio-group'
 import s from './Radio.module.scss'
 import clsx from 'clsx'
 
