@@ -11,22 +11,23 @@ const meta = {
 export default meta
 
 export const Default = () => {
-  const [isLoading, setIsLoading] = useState(false)
-  const [isChecked, setIsChecked] = useState(false)
-
-  const onChange = () => {
-    setIsLoading(true)
-    setTimeout(() => {
-      setIsChecked(true)
-      setIsLoading(false)
-    }, 2000)
-  }
+  // const [isLoading, setIsLoading] = useState(false)
+  // const [isChecked, setIsChecked] = useState(false)
+  //
+  // const onChange = () => {
+  //   setIsLoading(true)
+  //   setTimeout(() => {
+  //     setIsChecked(true)
+  //     setIsLoading(false)
+  //   }, 2000)
+  // }
 
   return (
     <Recaptcha
-      checked={isChecked}
-      setChecked={onChange}
-      loading={isLoading}
+      // checked={isChecked}
+      // setChecked={onChange}
+      // loading={isLoading}
+      checked={false}
       error={false}
       expired={false}
     />
@@ -43,8 +44,8 @@ export const Error = () => {
   return (
     <Recaptcha
       checked={isChecked}
-      setChecked={onChange}
-      loading={false}
+      // setChecked={onChange}
+      // loading={false}
       error={isError}
       expired={false}
     />
@@ -61,8 +62,8 @@ export const Expired = () => {
   return (
     <Recaptcha
       checked={isChecked}
-      setChecked={onChange}
-      loading={false}
+      // setChecked={onChange}
+      // loading={false}
       error={false}
       expired={isExpired}
     />

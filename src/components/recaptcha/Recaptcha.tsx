@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useRef, useState} from 'react'
 import {Card} from '../card'
 import {DynamicIcon} from '../icons'
 import s from './style.module.scss'
@@ -6,21 +6,40 @@ import {clsx} from "clsx";
 
 interface RecaptchaProps {
   checked: boolean
-  setChecked: () => void
-  loading: boolean
+  // setChecked: () => void
+  // loading: boolean
   expired: boolean
-  error: boolean
-  className: string
+  error?: boolean
+  className?: string
 }
 
 export const Recaptcha = ({
                             expired = false,
                             error = false,
                             checked = false,
-                            loading = false,
-                            setChecked,
+                            // loading = false,
+                            // setChecked,
                             className = '',
                           }: RecaptchaProps) => {
+
+  const [isLoading, setIsLoading] = useState(false)
+  const [isChecked, setIsChecked] = useState(checked)
+  const timerId = useRef<number | undefined>(undefined)
+
+  const onChange = () => {
+    if (checked) {
+      setIsLoading(true)
+      timerId.current = setTimeout(() => {
+        setIsChecked(true)
+        setIsLoading(false)
+      }, 2000)
+
+    }
+
+    return () => clearTimeout(timerId.current)
+  }
+
+
   return (
     <div className={error ? s.error : ''}>
       <Card className={clsx(s.wrapper, className)}>
@@ -28,11 +47,11 @@ export const Recaptcha = ({
           {expired && (
             <span className={s.errorText}>Verifiction expired. Check the checkbox again.</span>
           )}
-          {loading ? (
+          {isLoading ? (
             <div className={s.loader}></div>
           ) : (
             <>
-              {checked ? (
+              {isChecked ? (
                 <DynamicIcon
                   width={24}
                   height={24}
@@ -43,7 +62,8 @@ export const Recaptcha = ({
                 <input
                   type={'checkbox'}
                   checked={false}
-                  onClick={() => setChecked()}
+                  onClick={onChange}
+                  // onClick={() => setChecked()}
                   className={s.checkbox}
                 />
               )}
