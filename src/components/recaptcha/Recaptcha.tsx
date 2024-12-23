@@ -5,8 +5,7 @@ import s from './style.module.scss'
 import {clsx} from "clsx";
 
 interface RecaptchaProps {
-  checked: boolean
-  setChecked?: () => void
+  isVerified: boolean
   expired?: boolean
   error?: boolean
   className?: string
@@ -15,19 +14,17 @@ interface RecaptchaProps {
 export const Recaptcha = ({
                             expired = false,
                             error = false,
-                            checked = false,
+                            isVerified = false,
                             className = '',
                           }: RecaptchaProps) => {
 
   const [isLoading, setIsLoading] = useState(false)
-  const [isChecked, setIsChecked] = useState(checked)
   const timerId = useRef<number | undefined>(undefined)
 
   useEffect(() => {
-    if (checked) {
+    if (isVerified) {
       setIsLoading(true)
       timerId.current = setTimeout(() => {
-        setIsChecked(true)
         setIsLoading(false)
       }, 2000)
 
@@ -35,7 +32,7 @@ export const Recaptcha = ({
 
     return () => clearTimeout(timerId.current)
 
-  }, [isChecked]);
+  }, [isVerified]);
 
   return (
     <div className={error ? s.error : ''}>
@@ -48,7 +45,7 @@ export const Recaptcha = ({
             <div className={s.loader}></div>
           ) : (
             <>
-              {isChecked ? (
+              {isVerified ? (
                 <DynamicIcon
                   width={24}
                   height={24}
@@ -56,11 +53,12 @@ export const Recaptcha = ({
                   color={'#19983BE6'}
                 />
               ) : (
-                <input
-                  type={'checkbox'}
-                  defaultChecked={false}
-                  className={s.checkbox}
-                />
+                <div className={s.box}/>
+                // <input
+                //   type={'checkbox'}
+                //   defaultChecked={false}
+                //   className={s.checkbox}
+                // />
               )}
             </>
           )}

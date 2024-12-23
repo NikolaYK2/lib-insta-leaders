@@ -27,7 +27,7 @@ export const Default = () => {
       // checked={isChecked}
       // setChecked={onChange}
       // loading={isLoading}
-      checked={true}
+      isVerified={false}
       error={false}
       expired={false}
     />
@@ -43,7 +43,7 @@ export const Error = () => {
   }
   return (
     <Recaptcha
-      checked={isChecked}
+      isVerified={isChecked}
       // setChecked={onChange}
       // loading={false}
       error={isError}
@@ -61,7 +61,7 @@ export const Expired = () => {
   }
   return (
     <Recaptcha
-      checked={isChecked}
+      isVerified={isChecked}
       // setChecked={onChange}
       // loading={false}
       error={false}
