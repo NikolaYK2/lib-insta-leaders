@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import {Card} from '../card'
 import {DynamicIcon} from '../icons'
 import s from './style.module.scss'
@@ -6,9 +6,8 @@ import {clsx} from "clsx";
 
 interface RecaptchaProps {
   checked: boolean
-  // setChecked: () => void
-  // loading: boolean
-  expired: boolean
+  setChecked?: () => void
+  expired?: boolean
   error?: boolean
   className?: string
 }
@@ -17,8 +16,6 @@ export const Recaptcha = ({
                             expired = false,
                             error = false,
                             checked = false,
-                            // loading = false,
-                            // setChecked,
                             className = '',
                           }: RecaptchaProps) => {
 
@@ -26,7 +23,7 @@ export const Recaptcha = ({
   const [isChecked, setIsChecked] = useState(checked)
   const timerId = useRef<number | undefined>(undefined)
 
-  const onChange = () => {
+  useEffect(() => {
     if (checked) {
       setIsLoading(true)
       timerId.current = setTimeout(() => {
@@ -37,8 +34,8 @@ export const Recaptcha = ({
     }
 
     return () => clearTimeout(timerId.current)
-  }
 
+  }, [checked]);
 
   return (
     <div className={error ? s.error : ''}>
@@ -61,9 +58,7 @@ export const Recaptcha = ({
               ) : (
                 <input
                   type={'checkbox'}
-                  checked={false}
-                  onClick={onChange}
-                  // onClick={() => setChecked()}
+                  defaultChecked={false}
                   className={s.checkbox}
                 />
               )}

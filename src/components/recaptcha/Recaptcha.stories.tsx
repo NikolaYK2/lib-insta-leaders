@@ -27,7 +27,7 @@ export const Default = () => {
       // checked={isChecked}
       // setChecked={onChange}
       // loading={isLoading}
-      checked={false}
+      checked={true}
       error={false}
       expired={false}
     />
