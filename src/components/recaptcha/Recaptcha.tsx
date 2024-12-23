@@ -35,7 +35,7 @@ export const Recaptcha = ({
 
     return () => clearTimeout(timerId.current)
 
-  }, [checked]);
+  }, [isChecked]);
 
   return (
     <div className={error ? s.error : ''}>
