@@ -1,7 +1,8 @@
 import React from 'react'
-import { Card } from '../card'
-import { DynamicIcon } from '../icons'
+import {Card} from '../card'
+import {DynamicIcon} from '../icons'
 import s from './style.module.scss'
+import {clsx} from "clsx";
 
 interface RecaptchaProps {
   checked: boolean
@@ -9,18 +10,20 @@ interface RecaptchaProps {
   loading: boolean
   expired: boolean
   error: boolean
+  className: string
 }
 
 export const Recaptcha = ({
-  expired = false,
-  error = false,
-  checked = false,
-  loading = false,
-  setChecked,
-}: RecaptchaProps) => {
+                            expired = false,
+                            error = false,
+                            checked = false,
+                            loading = false,
+                            setChecked,
+                            className = '',
+                          }: RecaptchaProps) => {
   return (
     <div className={error ? s.error : ''}>
-      <Card className={s.wrapper}>
+      <Card className={clsx(s.wrapper, className)}>
         <div className={s.verificationBlock}>
           {expired && (
             <span className={s.errorText}>Verifiction expired. Check the checkbox again.</span>
@@ -48,7 +51,7 @@ export const Recaptcha = ({
           )}
           <span>I’m not a robot</span>
         </div>
-        <DynamicIcon width={44} height={55} iconId={'ReCaotcha'} />
+        <DynamicIcon width={44} height={55} iconId={'ReCaotcha'}/>
       </Card>
       {error && <span className={s.errorText}>Please verify that you are not a robot</span>}
     </div>
